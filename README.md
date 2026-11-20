@@ -40,7 +40,7 @@ No framework, no build step, no dependencies. It is one `index.html`, one photo 
 ## Files
 
 ```
-aditdev.ai-creator-portfolio/
+aditdev-creator-portfolio/
 ├── index.html    the whole site: content, styles (in <style>) and scripts (in <script>)
 ├── adit.png      profile photo used in the hero
 ├── favicon.svg   browser tab icon
@@ -94,7 +94,7 @@ After any change, refresh the browser. When you are happy, commit and push (see 
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
 3. Choose branch **main** and folder **/ (root)**, then **Save**.
 4. Wait 1–2 minutes. The site will be live at
-   `https://<your-github-username>.github.io/aditdev.ai-creator-portfolio/`
+   `https://adit-jana.github.io/aditdev-creator-portfolio/`
 
 Every push to `main` updates the live site automatically.
 
