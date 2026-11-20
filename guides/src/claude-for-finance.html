@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Claude for Your Money · aditdev.ai</title><link rel="stylesheet" href="guide.css"></head>
+<body>
+
+<div class="cover">
+  <div class="top"><b>aditdev.ai</b><span>Free guide · November 2026</span></div>
+  <div>
+    <span class="kicker">GUIDE 04 · MONEY</span>
+    <h1>Use Claude to get <em>better with money.</em></h1>
+    <p class="sub">Budgets from your bank statements, a trading journal that shows your real mistakes, and company research that starts from verified numbers. With the skills that do the heavy lifting.</p>
+  </div>
+  <div class="inside">
+    <h3>Inside</h3>
+    <ol>
+      <li>The rules first</li>
+      <li>Budget from a statement</li>
+      <li>Spreadsheets that calculate</li>
+      <li>Your trading journal, analysed</li>
+      <li>Research a stock (incl. NSE/BSE)</li>
+      <li>Value a company: DCF and comps</li>
+      <li>Track your investment thesis</li>
+      <li>Cash flow for freelancers</li>
+      <li>The skill list</li>
+      <li>Master prompts</li>
+    </ol>
+  </div>
+  <div class="foot"><span>By Adit · @aditdev.ai on Instagram</span><span>Education only. Not financial advice.</span></div>
+</div>
+
+<section>
+  <h2><span class="n">01</span>The rules first</h2>
+  <div class="warn"><b>Read this</b>This guide is education, not financial or investment advice. I am not a licensed adviser. Claude can make mistakes with numbers and does not see live market prices unless you connect a data source. Check every figure before you act on it.</div>
+  <ul class="check">
+    <li><b>Never</b> give Claude your bank, broker or UPI passwords, PINs or OTPs.</li>
+    <li><b>Never</b> let an AI place trades or move money for you.</li>
+    <li>Remove account numbers and your name from statements before you upload them.</li>
+    <li>Ask Claude to show its working: formulas, sources and assumptions.</li>
+    <li>Use Claude to <b>understand and organise</b>. Make the decision yourself.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">02</span>A budget from your bank statement</h2>
+  <p>Download last month's statement as CSV or PDF from your bank's app. Remove personal details. Then give it to Claude with this prompt.</p>
+<pre>Here is my bank statement for October (CSV). Do this:
+1. Put every transaction into one category: rent, groceries, food delivery,
+   transport, bills, subscriptions, shopping, EMI, investments, other.
+2. Show a table: category, total, % of spending, number of transactions.
+3. List every subscription and repeated payment with its monthly cost.
+4. Show my 5 biggest "small leaks" (many small payments that add up).
+5. Suggest a 50/30/20 budget for next month based on my real income,
+   with one specific cut in each overspent category.
+Show your working. Don't guess at transactions you can't read; list them.</pre>
+  <div class="tip"><b>Do it monthly</b>Keep each month's output. After three months ask: "Compare these three months. What changed and what is a trend?"</div>
+
+  <h2><span class="n">03</span>Spreadsheets that calculate</h2>
+  <p>Anthropic's <b>xlsx</b> skill lets Claude build real Excel files with working formulas, and the <b>pdf</b> skill reads statements and payslips.</p>
+<pre>/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills</pre>
+<pre>Use the xlsx skill. Build budget-2027.xlsx with: a Monthly sheet (income,
+12 categories, budget vs actual, difference with red when over), a
+Savings Goals sheet (goal, target, saved, months left, monthly needed),
+and a Summary sheet with yearly totals. Use formulas, not typed numbers.</pre>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Your trading journal, analysed</h2>
+  <p>Most traders don't lose because of one bad trade. They lose to the same habit, repeated. Export your trade history from your broker as CSV and ask Claude to find it.</p>
+<pre>Here is my trade history (CSV: date, symbol, side, qty, entry, exit, fees).
+Analyse my behaviour, not the market:
+1. Win rate, average win, average loss, profit factor, and net P&amp;L after fees.
+2. Results by weekday, by hour of entry, and by holding time.
+3. Do I hold losers longer than winners? Show the numbers.
+4. Trades taken within 30 minutes after a loss (revenge trading?) and how
+   they performed.
+5. My 3 most costly habits, each with the evidence.
+Do not tell me what to buy or sell. Only describe my patterns.</pre>
+
+  <h2><span class="n">05</span>Research a stock, Indian markets included</h2>
+  <div class="card"><div class="hd"><span class="rank">Skill</span><span class="meta">alirezarezvani/claude-skills · stock-analysis</span></div>
+    <h3>stock-analysis</h3>
+    <p>Builds an evidence-backed fundamental report on one listed company (US, global, NSE or BSE): verified data, ratios, a peer comparison and a scorecard.</p>
+<pre>npx skills add alirezarezvani/claude-skills --skill stock-analysis</pre></div>
+<pre>Use stock-analysis on [company, NSE: SYMBOL]. Show revenue, profit,
+margins, debt and cash flow for 5 years, compare with 3 listed peers, and
+list the 3 biggest risks. Cite where each number came from. Mark anything
+you could not verify. No buy or sell recommendation.</pre>
+
+  <h2><span class="n">06</span>Value a company: DCF and comparables</h2>
+  <div class="card"><div class="hd"><span class="rank">Plugin</span><span class="meta">anthropics/financial-services · financial-analysis</span></div>
+    <h3>Claude for Financial Services: financial-analysis</h3>
+    <p>Anthropic's own finance plugins, built for analysts. <code>financial-analysis</code> includes skills for a DCF model, comparable companies, a 3-statement model, an LBO model and checking spreadsheets for errors.</p>
+<pre>claude plugin marketplace add anthropics/financial-services
+claude plugin install financial-analysis@claude-for-financial-services</pre></div>
+  <p class="small">Professional-grade tools: they assume you know what a DCF is. If you're learning, ask Claude to explain each assumption as it builds the model.</p>
+</section>
+
+<section>
+  <h2><span class="n">07</span>Track your investment thesis</h2>
+  <div class="card"><div class="hd"><span class="rank">Plugin</span><span class="meta">anthropics/financial-services · equity-research</span></div>
+    <h3>equity-research</h3>
+    <p>Includes <b>thesis-tracker</b> (keep a written reason for every position and update it as news arrives), <b>earnings-analysis</b>, <b>catalyst-calendar</b> and <b>sector-overview</b>.</p>
+<pre>claude plugin install equity-research@claude-for-financial-services</pre></div>
+<pre>Use thesis-tracker. For each stock in my watchlist, write: why I hold it
+(3 bullets), what would prove me wrong, and the next 2 dates that matter.
+Next quarter I'll paste the results; tell me which theses still hold.</pre>
+
+  <h2><span class="n">08</span>Cash flow for freelancers and small businesses</h2>
+  <div class="card"><div class="hd"><span class="rank">Plugin</span><span class="meta">anthropics/knowledge-work-plugins · small-business</span></div>
+    <h3>cash-flow-snapshot, tax-season-organizer and more</h3>
+    <p><b>cash-flow-snapshot</b> turns your invoices and costs (from accounting software or a CSV) into a 30/60/90-day forecast with risk flags. <b>tax-season-organizer</b> prepares a packet for your accountant (built around US federal tax, so Indian users should use it for organising, not for tax rules).</p>
+<pre>/plugin marketplace add anthropics/knowledge-work-plugins
+/plugin install small-business@knowledge-work-plugins</pre></div>
+
+  <div class="card"><div class="hd"><span class="rank">Plugin</span><span class="meta">alirezarezvani/claude-skills · finance-skills</span></div>
+    <h3>financial-analyst and saas-metrics-coach</h3>
+    <p><b>financial-analyst</b>: ratio analysis, DCF, budget-vs-actual variance and rolling forecasts. <b>saas-metrics-coach</b>: ARR, MRR, churn, CAC and LTV for your side project or startup.</p>
+<pre>/plugin marketplace add alirezarezvani/claude-skills
+/plugin install finance-skills@claude-code-skills</pre></div>
+</section>
+
+<section>
+  <h2><span class="n">09</span>The skill list</h2>
+  <table>
+    <tr><th>Goal</th><th>Skill or plugin</th><th>From</th></tr>
+    <tr><td>Monthly budget sheet</td><td>xlsx</td><td>anthropics/skills</td></tr>
+    <tr><td>Read statements and payslips</td><td>pdf</td><td>anthropics/skills</td></tr>
+    <tr><td>Research one stock (NSE/BSE too)</td><td>stock-analysis</td><td>alirezarezvani/claude-skills</td></tr>
+    <tr><td>DCF, comps, 3-statement model</td><td>financial-analysis</td><td>anthropics/financial-services</td></tr>
+    <tr><td>Thesis, earnings, catalysts</td><td>equity-research</td><td>anthropics/financial-services</td></tr>
+    <tr><td>Cash-flow forecast</td><td>cash-flow-snapshot</td><td>anthropics/knowledge-work-plugins</td></tr>
+    <tr><td>Budget variance, forecasts</td><td>financial-analyst</td><td>alirezarezvani/claude-skills</td></tr>
+    <tr><td>Startup metrics</td><td>saas-metrics-coach</td><td>alirezarezvani/claude-skills</td></tr>
+  </table>
+
+  <h2><span class="n">10</span>Master prompts</h2>
+  <h3>Your money in one page</h3>
+<pre>Act as a patient personal-finance teacher, not an adviser. From the
+statements I paste, make a one-page summary of my finances: monthly income,
+fixed costs, flexible spending, savings rate, emergency fund in months,
+and total EMI as % of income. Then explain in plain words what each number
+means and what a healthy range usually looks like. Ask me before assuming.</pre>
+  <h3>Learn before you invest</h3>
+<pre>I'm a beginner investor in India. Teach me, one concept per message, with
+an example in rupees: compounding, SIP vs lump sum, index funds vs active
+funds, expense ratio, asset allocation, and why an emergency fund comes
+first. After each concept, ask me one question to check I understood.</pre>
+
+  <div class="end">
+    <h3>Money + AI, explained simply</h3>
+    <p>I break down how AI tools work and how to use them on real tasks. Follow <b>@aditdev.ai</b> on Instagram.</p>
+  </div>
+  <p class="small" style="margin-top:10pt">Education only, not investment advice. Repos and commands checked on GitHub on 20 November 2026; plugin names can change, so check each README.</p>
+</section>
+
+</body></html>

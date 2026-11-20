@@ -195,6 +195,55 @@ section.band{padding-block:96px;border-top:1px solid var(--line)}
 .guide h3{font-size:24px;font-weight:700}
 .guide p{color:var(--ink2);margin-top:6px}
 
+/* free guides */
+.gguides{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;perspective:1200px}
+.gcard{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;min-height:310px;padding:22px;border-radius:22px;min-width:0;
+  background:linear-gradient(180deg,var(--powder) 0 38%,var(--surface) 38%);border:1px solid var(--line);
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease}
+.gcard.live{transition:transform .08s linear}
+.gcard:hover{box-shadow:0 24px 48px -28px rgba(11,27,51,.5)}
+.gcard:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.gnum{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
+.gt{font-size:21px;font-weight:800;line-height:1.15;letter-spacing:-.015em;min-height:3.5em;color:var(--ink)}
+.gd{font-size:14.5px;color:var(--ink2);flex:1}
+.gm{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink2);gap:8px}
+.gm b{font-family:var(--mono);font-size:12px;padding:4px 9px;border-radius:7px;background:var(--sun);color:#0B1B33;letter-spacing:.05em}
+#unlock{border:0;border-radius:24px;padding:28px;width:min(440px,calc(100vw - 32px));background:var(--surface);color:var(--ink);box-shadow:0 40px 80px -20px rgba(0,0,0,.45)}
+#unlock::backdrop{background:rgba(5,7,12,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#unlock[open]{animation:dlg .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes dlg{from{transform:translateY(20px) scale(.97);opacity:0}}
+#unlock h3{font-size:24px;font-weight:800;margin:6px 0 18px}
+.ul-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer}
+.ul-steps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.ul-steps li{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start}
+.ul-steps .dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--powder);color:var(--accent);font-weight:700;font-size:14px;transition:background .3s ease,color .3s ease}
+.ul-steps li.ok .dot{background:var(--accent);color:var(--bg)}
+.ul-steps b{display:block;font-size:16px}
+.ul-steps p{color:var(--ink2);font-size:14px;margin:2px 0 8px}
+.ul-kw{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ul-kw code{font-family:var(--mono);font-weight:600;font-size:18px;padding:6px 12px;border-radius:9px;background:var(--sun);color:#0B1B33;letter-spacing:.06em}
+
+/* trending repos */
+.ttabs{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:-20px 0 18px}
+.ttab{min-height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.ttab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tmeta{margin-left:auto;font-size:13px;color:var(--ink2)}
+.trepos{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.trepo a{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;padding:16px 18px;border-radius:18px;background:var(--surface);border:1px solid var(--line);text-decoration:none;min-width:0;height:100%;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s ease}
+.trepo a:hover{transform:translateY(-3px);border-color:var(--accent)}
+.trk{grid-row:span 2;font-family:var(--mono);font-size:13px;color:var(--ink2);width:24px}
+.trn{font-weight:700;font-size:15.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.trn span{color:var(--ink2);font-weight:500}
+.trs{font-variant-numeric:tabular-nums;font-weight:700;font-size:14px;white-space:nowrap}
+.trs::before{content:"★ ";color:var(--sun)}
+.trd{grid-column:2 / 4;font-size:13.5px;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trl{grid-column:2 / 4;font-size:12px;color:var(--ink2);display:flex;gap:12px}
+.trl i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:5px;vertical-align:0}
+.trepo{animation:trin .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes trin{from{opacity:0;transform:translateY(8px)}}
+.tempty{grid-column:1/-1;padding:28px;text-align:center;color:var(--ink2);border:1px dashed var(--line);border-radius:18px}
+
 /* myth or fact */
 .qbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:-20px 0 20px;font-weight:600;font-variant-numeric:tabular-nums}
 .qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -257,6 +306,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .stage{min-height:300px}
   .guide{grid-template-columns:1fr;justify-items:start}
   .qgrid{grid-template-columns:1fr}
+  .gguides{grid-template-columns:1fr 1fr}
+  .gcard{min-height:0}
+  .gt{min-height:0}
+  .trepos{grid-template-columns:1fr}
+  .tmeta{margin-left:0;width:100%}
   .final{padding-block:100px 90px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -410,6 +464,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="band" id="guides" aria-labelledby="guides-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Free guides</div>
+      <h2 id="guides-h">Four guides. Zero fluff.</h2>
+      <p>Every command checked against the official docs and GitHub. Follow on Instagram, send one word, and the PDF lands in your DMs.</p>
+    </div>
+    <div class="gguides">
+      <button class="gcard tilt reveal" type="button" data-g="0"><span class="gnum">01</span><span class="gt">Claude Code setup guide</span><span class="gd">CLAUDE.md, rules, permissions, hooks, skills, subagents, MCP and a master setup prompt.</span><span class="gm"><span>9 pages · developers</span><b>SETUP</b></span></button>
+      <button class="gcard tilt reveal" type="button" data-g="1"><span class="gnum">02</span><span class="gt">Top 10 Claude skills for developers</span><span class="gd">Plan, test first, debug the root cause, prove it works, review before merge.</span><span class="gm"><span>6 pages · developers</span><b>SKILLS</b></span></button>
+      <button class="gcard tilt reveal" type="button" data-g="2"><span class="gnum">03</span><span class="gt">Claude design and motion skills</span><span class="gd">UI that doesn't look AI-made, plus Remotion, HyperFrames and GSAP for video.</span><span class="gm"><span>5 pages · creators</span><b>DESIGN</b></span></button>
+      <button class="gcard tilt reveal" type="button" data-g="3"><span class="gnum">04</span><span class="gt">Claude for your money</span><span class="gd">Budgets from statements, a trading-journal review and stock research skills.</span><span class="gm"><span>6 pages · everyone</span><b>MONEY</b></span></button>
+    </div>
+  </div>
+  <dialog id="unlock" aria-labelledby="ul-title">
+    <form method="dialog"><button class="ul-x" aria-label="Close">×</button></form>
+    <div class="eyebrow" id="ul-num">Guide 01</div>
+    <h3 id="ul-title">Claude Code setup guide</h3>
+    <ol class="ul-steps">
+      <li id="ul-s1"><span class="dot">1</span><div><b>Follow @aditdev.ai</b><p>So the DM can reach you.</p><a class="btn small" id="ul-follow" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Open Instagram</a></div></li>
+      <li id="ul-s2"><span class="dot">2</span><div><b>DM me the word</b><p>Copy it, then send it in a message.</p><div class="ul-kw"><code id="ul-kw">SETUP</code><button class="chip" type="button" id="ul-copy">Copy</button><a class="btn small" id="ul-dm" href="https://ig.me/m/aditdev.ai" target="_blank" rel="noopener">Open DM</a></div></div></li>
+      <li id="ul-s3"><span class="dot">3</span><div><b>Get the PDF</b><p>The guide link arrives in your Instagram DMs.</p></div></li>
+    </ol>
+  </dialog>
+</section>
+
 <section class="band" aria-labelledby="guide-h">
   <div class="wrap">
     <div class="guide spot reveal">
@@ -432,6 +512,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <div class="qbar reveal"><span id="qscore">0 of 4 answered</span><button class="chip" type="button" id="qreset">Play again</button></div>
     <div class="qgrid" id="qgrid"></div>
+  </div>
+</section>
+
+<section class="band" id="trending" aria-labelledby="trend-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Live from GitHub</div>
+      <h2 id="trend-h">New repos everyone is starring.</h2>
+      <p>The most-starred repositories created in the last 7 days. Refreshed every morning.</p>
+    </div>
+    <div class="ttabs" role="tablist" aria-label="Repository filter">
+      <button class="ttab" role="tab" type="button" aria-selected="true" data-k="ai">AI &amp; agents</button>
+      <button class="ttab" role="tab" type="button" aria-selected="false" data-k="all">Everything</button>
+      <span class="tmeta" id="tmeta"></span>
+    </div>
+    <ol class="trepos" id="trepos"><li class="tempty">Loading this week's repos…</li></ol>
+    <p class="note">Collected automatically and filtered for spam, star farms and hacking tools. Listing is not an endorsement: read a repo's code before you run it.</p>
   </div>
 </section>
 
@@ -595,6 +692,60 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     else if (!lost) verdict.innerHTML = '<span class="flag">Fits</span>The AI can still see everything you said.';
     else verdict.innerHTML = `<span class="flag warn">Forgotten</span>${lost} word${lost > 1 ? 's' : ''} fell off, including “${esc(t.slice(0, lost).slice(-4).join(' '))}”.`;
   }
+  /* 8a. free guides: Instagram unlock dialog */
+  const GUIDES = [
+    { n: 'Guide 01', t: 'Claude Code setup guide', k: 'SETUP' },
+    { n: 'Guide 02', t: 'Top 10 Claude skills for developers', k: 'SKILLS' },
+    { n: 'Guide 03', t: 'Claude design and motion skills', k: 'DESIGN' },
+    { n: 'Guide 04', t: 'Claude for your money', k: 'MONEY' }
+  ];
+  const dlg = document.getElementById('unlock'), $ = id => document.getElementById(id);
+  document.querySelectorAll('.gcard').forEach(card => card.addEventListener('click', () => {
+    const g = GUIDES[card.dataset.g];
+    $('ul-num').textContent = g.n; $('ul-title').textContent = g.t; $('ul-kw').textContent = g.k;
+    $('ul-copy').textContent = 'Copy';
+    ['ul-s1', 'ul-s2', 'ul-s3'].forEach(id => $(id).classList.remove('ok'));
+    dlg.showModal ? dlg.showModal() : dlg.setAttribute('open', '');
+  }));
+  $('ul-follow').addEventListener('click', () => $('ul-s1').classList.add('ok'));
+  $('ul-dm').addEventListener('click', () => { $('ul-s2').classList.add('ok'); $('ul-s3').classList.add('ok'); });
+  $('ul-copy').addEventListener('click', async () => {
+    const kw = $('ul-kw').textContent;
+    try { await navigator.clipboard.writeText(kw); $('ul-copy').textContent = 'Copied'; }
+    catch { const r = document.createRange(); r.selectNodeContents($('ul-kw')); getSelection().removeAllRanges(); getSelection().addRange(r); $('ul-copy').textContent = 'Press Ctrl+C'; }
+    $('ul-s2').classList.add('ok');
+  });
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  /* 8b. trending GitHub repos from data/trending.json (refreshed daily by a GitHub Action) */
+  const trepos = $('trepos'), tmeta = $('tmeta');
+  let trend = null, tkey = 'ai';
+  const fmt = n => n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
+  function showTrend() {
+    const list = trend[tkey] || [];
+    if (!list.length) { trepos.innerHTML = '<li class="tempty">Nothing passed the spam filter this week. Check back tomorrow.</li>'; return; }
+    trepos.innerHTML = list.map((r, i) => {
+      const [owner, name] = r.name.split('/');
+      return `<li class="trepo" style="animation-delay:${i * 60}ms"><a href="${esc(r.url)}" target="_blank" rel="noopener">
+        <span class="trk">${String(i + 1).padStart(2, '0')}</span>
+        <span class="trn"><span>${esc(owner)}/</span>${esc(name)}</span>
+        <span class="trs">${fmt(r.stars)}</span>
+        <span class="trd">${esc(r.description)}</span>
+        <span class="trl"><span><i></i>${esc(r.language || 'Code')}</span><span>created ${esc(r.created)}</span></span></a></li>`;
+    }).join('');
+  }
+  document.querySelectorAll('.ttab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.ttab').forEach(x => x.setAttribute('aria-selected', x === b));
+    tkey = b.dataset.k; if (trend) showTrend();
+  }));
+  fetch('data/trending.json').then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => {
+    trend = d;
+    tmeta.textContent = `Updated ${new Date(d.updated.replace('Z', ':00Z')).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })} · repos created since ${d.since}`;
+    showTrend();
+  }).catch(() => {
+    trepos.innerHTML = '<li class="tempty">Couldn\'t load the list right now. <a class="link" href="https://github.com/trending" target="_blank" rel="noopener">See GitHub Trending ›</a></li>';
+  });
+
   /* 8. myth or fact game */
   const Q = [
     { q: 'AI reads your message word by word, like you do.', a: false, why: 'It reads tokens: small chunks of text, often pieces of words.' },

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Top 10 Claude Skills for Developers · aditdev.ai</title><link rel="stylesheet" href="guide.css"></head>
+<body>
+
+<div class="cover">
+  <div class="top"><b>aditdev.ai</b><span>Free guide · November 2026</span></div>
+  <div>
+    <span class="kicker">GUIDE 02 · FOR DEVELOPERS</span>
+    <h1>10 Claude skills that make you a <em>faster developer.</em></h1>
+    <p class="sub">Plan before code, test first, debug from the root cause, prove it works, review before you merge. Each one installs in under a minute.</p>
+  </div>
+  <div class="inside">
+    <h3>The list</h3>
+    <ol>
+      <li>Brainstorm + write plans</li>
+      <li>Test-driven development</li>
+      <li>Systematic debugging</li>
+      <li>Verification before done</li>
+      <li>Feature dev</li>
+      <li>Code review</li>
+      <li>Security guidance</li>
+      <li>Webapp testing</li>
+      <li>MCP builder</li>
+      <li>Skill creator</li>
+    </ol>
+  </div>
+  <div class="foot"><span>By Adit · @aditdev.ai on Instagram</span><span>Every repo and command checked on GitHub, Nov 2026</span></div>
+</div>
+
+<section>
+  <h2><span class="n">00</span>First, what is a skill?</h2>
+  <p class="lead">A skill is a folder with a <code>SKILL.md</code> file: instructions, and sometimes scripts, that Claude loads only when the task needs them. A plugin is a package of skills, agents and hooks you install in one go.</p>
+  <table>
+    <tr><th>To</th><th>Run inside Claude Code</th></tr>
+    <tr><td>Add a plugin marketplace</td><td><code>/plugin marketplace add owner/repo</code></td></tr>
+    <tr><td>Install a plugin</td><td><code>/plugin install name@marketplace</code></td></tr>
+    <tr><td>Browse what you have</td><td><code>/plugin</code></td></tr>
+    <tr><td>Call a skill by hand</td><td><code>/skill-name</code></td></tr>
+  </table>
+  <p>Skills 1–4 come from one plugin, <b>Superpowers</b> by Jesse Vincent (obra/superpowers, about 322k stars on GitHub). Skills 5–7 are official Anthropic plugins. Skills 8–10 are from Anthropic's public skills repo (anthropics/skills, about 198k stars).</p>
+<pre><span class="c"># Superpowers (skills 1-4)</span>
+/plugin install superpowers@claude-plugins-official
+
+<span class="c"># Official plugins (skills 5-7)</span>
+/plugin install feature-dev@claude-plugins-official
+/plugin install code-review@claude-plugins-official
+/plugin install security-guidance@claude-plugins-official
+
+<span class="c"># Anthropic skills repo (skills 8-10)</span>
+/plugin marketplace add anthropics/skills
+/plugin install example-skills@anthropic-agent-skills</pre>
+  <div class="tip"><b>Before you install</b>Skills can run code on your machine. Install from sources you trust and skim the SKILL.md first. Everything in this guide is from Anthropic or a widely used open-source repo.</div>
+</section>
+
+<section>
+  <h2 class="pb"><span class="n">01–04</span>The Superpowers core</h2>
+  <p class="lead">These four change how Claude works, not just what it knows. Together they stop the two most common failures: building the wrong thing, and saying "done" when it isn't.</p>
+
+  <div class="card"><div class="hd"><span class="rank">01</span><span class="meta">obra/superpowers · brainstorming, writing-plans, executing-plans</span></div>
+    <h3>Brainstorm, then write a plan</h3>
+    <p>Before any code, Claude asks questions until the goal is clear, writes a step-by-step plan into a file, then works through it task by task.</p>
+    <p class="use"><b>Use it for:</b> any feature bigger than one file. You review a plan in two minutes instead of untangling 400 wrong lines.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">02</span><span class="meta">obra/superpowers · test-driven-development</span></div>
+    <h3>Test-driven development</h3>
+    <p>Write a failing test, watch it fail, write the smallest code that passes, then clean up. The skill makes Claude follow that order every time.</p>
+    <p class="use"><b>Use it for:</b> business logic and bug fixes. A failing test is the clearest spec you can give an AI.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">03</span><span class="meta">obra/superpowers · systematic-debugging</span></div>
+    <h3>Systematic debugging</h3>
+    <p>Triggers on any bug or failing test. Claude has to find the root cause (reproduce, trace, form one hypothesis, test it) before it proposes a fix.</p>
+    <p class="use"><b>Use it for:</b> the bug Claude already "fixed" three times. It ends the guess-and-patch loop.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">04</span><span class="meta">obra/superpowers · verification-before-completion</span></div>
+    <h3>Verification before completion</h3>
+    <p>Before Claude says something is fixed or passing, it must run the check and show you the output. Evidence before claims.</p>
+    <p class="use"><b>Use it for:</b> everything. This one skill removes most "it said done but nothing works" moments.</p></div>
+</section>
+
+<section>
+  <h2><span class="n">05–07</span>Official Anthropic plugins</h2>
+
+  <div class="card"><div class="hd"><span class="rank">05</span><span class="meta">claude-plugins-official · feature-dev</span></div>
+    <h3>Feature dev</h3>
+    <p>A structured workflow for a new feature with specialist agents: one explores the codebase, one designs the architecture, one reviews quality at the end.</p>
+    <p class="use"><b>Use it for:</b> features in a codebase you don't know well. The explorer agent finds the patterns you should follow.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">06</span><span class="meta">claude-plugins-official · code-review</span></div>
+    <h3>Code review</h3>
+    <p>Reviews a pull request with several specialised agents and scores each finding by confidence, so you see real problems, not a wall of nits.</p>
+    <p class="use"><b>Use it for:</b> a second pair of eyes before you ask a human to review. Pair it with <code>pr-review-toolkit</code> for test-coverage and error-handling checks.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">07</span><span class="meta">claude-plugins-official · security-guidance</span></div>
+    <h3>Security guidance</h3>
+    <p>Warns on known dangerous patterns as Claude writes code (unsafe deserialisation, raw HTML injection and more), then reviews the diff when Claude finishes and sends serious findings back to be fixed.</p>
+    <p class="use"><b>Use it for:</b> any code that touches user input, files or auth.</p></div>
+
+  <h2 style="margin-top:14pt"><span class="n">08–10</span>From Anthropic's skills repo</h2>
+
+  <div class="card"><div class="hd"><span class="rank">08</span><span class="meta">anthropics/skills · webapp-testing</span></div>
+    <h3>Webapp testing</h3>
+    <p>Lets Claude drive your local web app with Playwright: click through flows, take screenshots, read browser logs.</p>
+    <p class="use"><b>Use it for:</b> checking a UI change actually works in a browser, not just that it compiles.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">09</span><span class="meta">anthropics/skills · mcp-builder</span></div>
+    <h3>MCP builder</h3>
+    <p>A guide for building good MCP servers, so Claude (and other AI tools) can use your internal APIs through well-designed tools.</p>
+    <p class="use"><b>Use it for:</b> connecting Claude to your company's service, database or admin panel.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">10</span><span class="meta">anthropics/skills · skill-creator</span></div>
+    <h3>Skill creator</h3>
+    <p>Helps you write, test and improve your own skills. The best skill is the one that encodes how <i>your</i> team works.</p>
+    <p class="use"><b>Use it for:</b> turning your most repeated prompt into a <code>/command</code> the whole team can use.</p></div>
+</section>
+
+<section>
+  <h2><span class="n">+</span>Worth adding next</h2>
+  <table>
+    <tr><th>Plugin</th><th>What it adds</th><th>Install</th></tr>
+    <tr><td>Language servers</td><td>Real go-to-definition and type errors for Claude (TypeScript, Python, Go, Rust, Java and more)</td><td><code>/plugin install typescript-lsp@claude-plugins-official</code> (or pyright-lsp, gopls-lsp …)</td></tr>
+    <tr><td>commit-commands</td><td>Commands for commit, push and opening a PR</td><td><code>/plugin install commit-commands@claude-plugins-official</code></td></tr>
+    <tr><td>pr-review-toolkit</td><td>Agents for comments, tests, error handling and type design</td><td><code>/plugin install pr-review-toolkit@claude-plugins-official</code></td></tr>
+    <tr><td>claude-md-management</td><td>Keeps your CLAUDE.md tidy and current</td><td><code>/plugin install claude-md-management@claude-plugins-official</code></td></tr>
+  </table>
+
+  <h2><span class="n">→</span>A day with these skills</h2>
+  <ol>
+    <li><b>Morning, new ticket:</b> "Let's brainstorm this feature" → Claude asks questions → writes <code>plan.md</code>.</li>
+    <li><b>Build:</b> "Execute the plan with TDD" → failing test, code, passing test, per step.</li>
+    <li><b>Something breaks:</b> systematic-debugging kicks in → root cause first, then one fix.</li>
+    <li><b>Before you commit:</b> verification runs the suite and shows output; security-guidance reviews the diff.</li>
+    <li><b>Open the PR:</b> <code>/code-review</code> → fix the high-confidence findings → ask a human.</li>
+  </ol>
+
+  <h3>Master prompt: pick skills for your repo</h3>
+<pre>Look at this repository (language, framework, test setup, CI) and my last
+20 commits. Then:
+1. Tell me which of these would help most here and why, best first:
+   superpowers, feature-dev, code-review, security-guidance, webapp-testing,
+   mcp-builder, skill-creator, and the language-server plugin for my stack.
+2. Give me the exact /plugin commands to install your top 5.
+3. Find the task I repeat most in my commits and draft a SKILL.md for it in
+   .claude/skills/. Show it to me before saving.</pre>
+
+  <div class="end">
+    <h3>Want the setup guide too?</h3>
+    <p>Guide 01 shows how to write CLAUDE.md, rules, permissions and hooks. Find all four free guides on the site, and follow <b>@aditdev.ai</b> on Instagram.</p>
+  </div>
+  <p class="small" style="margin-top:10pt">Star counts and commands from GitHub on 20 November 2026. Plugin names can change: if a command fails, check the repo's README.</p>
+</section>
+
+</body></html>

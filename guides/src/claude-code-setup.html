@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Claude Code Setup Guide · aditdev.ai</title><link rel="stylesheet" href="guide.css"></head>
+<body>
+
+<div class="cover">
+  <div class="top"><b>aditdev.ai</b><span>Free guide · November 2026</span></div>
+  <div>
+    <span class="kicker">GUIDE 01 · FOR DEVELOPERS</span>
+    <h1>Set up Claude Code so it works <em>the way you do.</em></h1>
+    <p class="sub">The files, rules and settings that turn Claude Code from a clever stranger into a teammate who knows your project, your commands and your standards.</p>
+  </div>
+  <div class="inside">
+    <h3>Inside</h3>
+    <ol>
+      <li>The 8 files that matter</li>
+      <li>Your project CLAUDE.md</li>
+      <li>Your personal CLAUDE.md</li>
+      <li>Rules for parts of the code</li>
+      <li>Permissions and hooks</li>
+      <li>Your own skills</li>
+      <li>A reviewer subagent</li>
+      <li>MCP: connect your tools</li>
+      <li>The daily workflow</li>
+      <li>The master setup prompt</li>
+    </ol>
+  </div>
+  <div class="foot"><span>By Adit · @aditdev.ai on Instagram</span><span>Facts checked against code.claude.com/docs</span></div>
+</div>
+
+<section>
+  <h2><span class="n">01</span>The 8 files that matter</h2>
+  <p class="lead">Claude Code starts every session knowing nothing about you. These files are how it learns. Each one has a different reach.</p>
+  <table>
+    <tr><th>File</th><th>What goes in it</th><th>Who it applies to</th></tr>
+    <tr><td><code>~/.claude/CLAUDE.md</code></td><td>Your personal habits: language, style, how you like answers</td><td>You, every project</td></tr>
+    <tr><td><code>./CLAUDE.md</code></td><td>The project: commands, architecture, standards. Commit it.</td><td>Everyone on the repo</td></tr>
+    <tr><td><code>./CLAUDE.local.md</code></td><td>Your sandbox URLs, test accounts. Add to <code>.gitignore</code>.</td><td>You, this project</td></tr>
+    <tr><td><code>.claude/rules/*.md</code></td><td>Rules that only apply to some paths, like <code>src/api/**</code></td><td>Everyone, matching files only</td></tr>
+    <tr><td><code>.claude/settings.json</code></td><td>Permissions, hooks, plugins, env vars. Commit it.</td><td>Everyone on the repo</td></tr>
+    <tr><td><code>.claude/settings.local.json</code></td><td>Your own overrides. Kept out of git.</td><td>You, this project</td></tr>
+    <tr><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td><td>Repeatable workflows you call with <code>/name</code></td><td>Everyone (or <code>~/.claude/skills</code> for you)</td></tr>
+    <tr><td><code>.claude/agents/&lt;name&gt;.md</code></td><td>Specialist subagents, such as a code reviewer</td><td>Everyone (or <code>~/.claude/agents</code> for you)</td></tr>
+  </table>
+  <p>Plus <code>.mcp.json</code> for shared tool connections (section 08). Run <code>/status</code> inside Claude Code to see which settings files loaded, and <code>/memory</code> to open the CLAUDE.md files in use.</p>
+  <div class="tip"><b>The rule of thumb</b>CLAUDE.md is where you write down what you would otherwise explain again every session. If you have said it twice, it belongs in a file.</div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Your project CLAUDE.md</h2>
+  <p>Start with <code>/init</code>. Claude reads the codebase and writes a first draft with the build commands, tests and conventions it finds. Then edit it down. The official guidance: keep each CLAUDE.md under about 200 lines, because a longer file takes more context and Claude follows it less closely.</p>
+  <p>Write rules you could check. "Run <code>pnpm test</code> before you say a task is done" works. "Write good tests" does not.</p>
+  <div class="file">CLAUDE.md</div>
+<pre><span class="k"># Project: Orders API</span>
+Node 22 + Fastify + Postgres (Prisma). Monorepo with pnpm workspaces.
+
+<span class="k">## Commands</span>
+- Install: pnpm install
+- Dev server: pnpm dev            (http://localhost:3000)
+- Tests: pnpm test                (run before saying any task is done)
+- One test: pnpm test -- orders.spec.ts
+- Lint + types: pnpm lint && pnpm typecheck
+
+<span class="k">## Architecture</span>
+- apps/api       HTTP routes only. No business logic here.
+- packages/core  Business logic. Pure functions, fully tested.
+- packages/db    Prisma schema and migrations. Never edit generated files.
+
+<span class="k">## Standards</span>
+- TypeScript strict. No `any`. Prefer named exports.
+- Every new endpoint: zod input schema + a test in the same PR.
+- Errors: throw AppError(code, message). Never return raw stack traces.
+
+<span class="k">## Never</span>
+- Never run migrations against production. Use pnpm db:migrate:dev only.
+- Never commit .env files or print secrets in logs.
+
+<span class="k">## How I work</span>
+- For changes over ~50 lines, show a plan first and wait for my OK.
+- Small commits with clear messages. Do not push unless I ask.
+
+@docs/architecture.md</pre>
+  <p class="small">The last line is an import: <code>@path/to/file</code> pulls that file into context alongside the CLAUDE.md. Use it to point at docs you already maintain instead of copying them.</p>
+</section>
+
+<section>
+  <h2 class="pb"><span class="n">03</span>Your personal CLAUDE.md</h2>
+  <p><code>~/.claude/CLAUDE.md</code> loads in every project on your machine. Put only things that are true everywhere.</p>
+  <div class="file">~/.claude/CLAUDE.md</div>
+<pre><span class="k"># About me</span>
+Backend developer, 4 years. Main stack: TypeScript, Python, Postgres.
+
+<span class="k"># How to answer</span>
+- Lead with the answer, then the reason. Keep it short.
+- When you change code, show only the changed lines plus 2 lines of context.
+- If a request is ambiguous, ask one question before writing code.
+
+<span class="k"># Habits</span>
+- Read the existing code before adding a new helper. Reuse what exists.
+- Run the tests you touched. Say clearly if you could not run them.
+- Never use `git push --force` or delete branches without asking.</pre>
+
+  <h2><span class="n">04</span>Rules for parts of the code</h2>
+  <p>When a rule only matters for some files, put it in <code>.claude/rules/</code> with a <code>paths</code> list. Claude only loads it while working on matching files, so your main CLAUDE.md stays short.</p>
+  <div class="file">.claude/rules/api.md</div>
+<pre>---
+paths:
+  - "apps/api/**/*.ts"
+---
+<span class="k"># API rules</span>
+- Every route validates input with a zod schema.
+- Every route has a test in apps/api/test that covers a 400 case.
+- Return { data } on success and { error: { code, message } } on failure.</pre>
+  <div class="file">.claude/rules/frontend.md</div>
+<pre>---
+paths:
+  - "apps/web/**/*.tsx"
+---
+- Use components from packages/ui before writing new ones.
+- No inline colours. Use the tokens in packages/ui/tokens.ts.</pre>
+</section>
+
+<section>
+  <h2 class="pb"><span class="n">05</span>Permissions and hooks</h2>
+  <p>CLAUDE.md is advice. Settings are enforced. Use <code>.claude/settings.json</code> to allow the safe commands you run all day (fewer prompts) and to block what must never happen.</p>
+  <div class="file">.claude/settings.json</div>
+<pre>{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(pnpm test *)",
+      "Bash(pnpm lint)",
+      "Bash(pnpm typecheck)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(git push *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "jq -r '.tool_input.file_path' | xargs pnpm prettier --write --log-level warn" }
+        ]
+      }
+    ]
+  }
+}</pre>
+  <p><b>Hooks</b> are shell commands Claude Code runs at fixed moments, every time, no matter what the model decides. The events you will use most:</p>
+  <table>
+    <tr><th>Event</th><th>Runs</th><th>Good for</th></tr>
+    <tr><td><code>PreToolUse</code></td><td>Before a tool call</td><td>Blocking risky commands or edits to protected files</td></tr>
+    <tr><td><code>PostToolUse</code></td><td>After a tool call</td><td>Formatting, linting or type-checking after every edit</td></tr>
+    <tr><td><code>UserPromptSubmit</code></td><td>When you send a message</td><td>Adding context, such as the current branch or ticket</td></tr>
+    <tr><td><code>SessionStart</code></td><td>When a session opens</td><td>Loading project status or recent changes</td></tr>
+    <tr><td><code>Stop</code></td><td>When Claude finishes a reply</td><td>Running tests, sending a notification</td></tr>
+  </table>
+  <div class="warn"><b>Careful</b>A hook runs with your user's permissions. Read any hook before you add it, and keep project hooks in the committed settings so the team can review them.</div>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Your own skills</h2>
+  <p>A skill is a folder with a <code>SKILL.md</code>. Claude loads it when the description matches the task, or you call it with <code>/skill-name</code>. Use skills for workflows you repeat: shipping a PR, adding an endpoint, writing a migration.</p>
+  <div class="file">.claude/skills/new-endpoint/SKILL.md</div>
+<pre>---
+name: new-endpoint
+description: Add a new REST endpoint to apps/api with schema, handler, test and docs. Use when asked to add or create an API route.
+---
+<span class="k"># Add an endpoint</span>
+1. Ask for: method, path, input fields, response shape, auth rule.
+2. Write the zod schema in apps/api/schemas/&lt;name&gt;.ts.
+3. Put business logic in packages/core, not in the route.
+4. Add the route in apps/api/routes and register it in routes/index.ts.
+5. Write tests: one success case and one 400 case.
+6. Run pnpm test -- &lt;name&gt; and pnpm typecheck. Fix until both pass.
+7. Add the endpoint to docs/api.md.
+8. Reply with the files changed and the test output.</pre>
+  <div class="tip"><b>Tip</b>Add <code>disable-model-invocation: true</code> to the frontmatter for skills that should only run when you type the command, such as <code>/deploy</code>. Skills can also hold scripts and templates in the same folder.</div>
+
+  <h2 class="pb"><span class="n">07</span>A reviewer subagent</h2>
+  <p>Subagents run in their own context window, so a long review does not fill your main chat. Save this file and ask "use the code-reviewer on my changes".</p>
+  <div class="file">.claude/agents/code-reviewer.md</div>
+<pre>---
+name: code-reviewer
+description: Reviews the current git diff for bugs, security issues and missing tests. Use after finishing a change and before committing.
+tools: Read, Grep, Glob, Bash
+---
+You are a senior reviewer. Run `git diff` and review only what changed.
+Report findings as: file:line, severity (high/medium/low), the problem, the fix.
+Check: wrong logic, unhandled errors, secrets in code, missing input validation,
+missing or weak tests. Skip style nits. If nothing is wrong, say so in one line.</pre>
+</section>
+
+<section>
+  <h2><span class="n">08</span>MCP: connect your tools</h2>
+  <p>MCP servers give Claude access to tools outside your repo: GitHub, your database, Sentry, Notion, a browser. Add one from the terminal:</p>
+<pre>claude mcp add --transport http notion https://mcp.notion.com/mcp</pre>
+  <p>To share a server with the team, put it in <code>.mcp.json</code> at the repo root and commit it. Teammates are asked to approve project servers the first time.</p>
+  <div class="file">.mcp.json</div>
+<pre>{
+  "mcpServers": {
+    "notion": { "type": "http", "url": "https://mcp.notion.com/mcp" }
+  }
+}</pre>
+  <p class="small">Only add servers you trust. An MCP server can read what you give it and act with the access you grant.</p>
+
+  <h2><span class="n">09</span>The daily workflow</h2>
+  <table>
+    <tr><th>Moment</th><th>Do this</th></tr>
+    <tr><td>Big or unclear task</td><td>Switch to plan mode (<code>Shift+Tab</code>). Let Claude read and propose a plan. Approve, then build.</td></tr>
+    <tr><td>New, unrelated task</td><td><code>/clear</code>. Old context from the last task only gets in the way.</td></tr>
+    <tr><td>Long session</td><td><code>/context</code> to see what fills the window. <code>/compact</code> to summarise and keep going.</td></tr>
+    <tr><td>Before "done"</td><td>Ask Claude to run the tests and show the output. Proof, not promises.</td></tr>
+    <tr><td>Two tasks at once</td><td>Use git worktrees so each Claude session has its own copy of the repo.</td></tr>
+    <tr><td>Claude repeats a mistake</td><td>Fix it once, then add a line to CLAUDE.md so it never comes back.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">10</span>The master setup prompt</h2>
+  <p>Open Claude Code in your repo and paste this. It does most of this guide for you, then you review.</p>
+<pre>Set this repository up for Claude Code. Work in this order and stop for my
+approval after step 2.
+
+1. Read the repo: package files, README, CI config, folder structure, tests.
+2. Show me a plan listing every file you will create, with one line on each.
+3. Create ./CLAUDE.md under 150 lines with: one-paragraph overview, exact
+   commands (install, dev, test, single test, lint, typecheck, build),
+   architecture map of the top folders, coding standards you can see in the
+   code, a "Never" list, and my workflow: plan first for big changes, run
+   tests before saying done, small commits, never push without asking.
+4. Create .claude/rules/ files for any area with its own conventions
+   (API, frontend, database, infra), each with a paths: list.
+5. Create .claude/settings.json: allow the safe read-only and test commands
+   you found, deny reading .env files and git push.
+6. Create .claude/agents/code-reviewer.md that reviews the git diff for
+   bugs, security issues and missing tests.
+7. Create one skill in .claude/skills/ for the most repeated task in this
+   repo (for example adding an endpoint, a component or a migration).
+8. Add CLAUDE.local.md and .claude/settings.local.json to .gitignore.
+9. Report what you created and anything you were unsure about.</pre>
+
+  <h3 class="pb">Setup checklist</h3>
+  <ul class="check">
+    <li><code>/init</code> run, then trimmed to under 200 lines</li>
+    <li>Every command in CLAUDE.md copied from a real script and tested</li>
+    <li>A "Never" list for the things that would hurt</li>
+    <li>Path rules for areas with their own conventions</li>
+    <li><code>.claude/settings.json</code> committed with allow and deny rules</li>
+    <li>A format or lint hook after edits</li>
+    <li>One skill for your most repeated task</li>
+    <li>A reviewer subagent</li>
+    <li><code>CLAUDE.local.md</code> and <code>settings.local.json</code> in <code>.gitignore</code></li>
+  </ul>
+
+  <div class="end">
+    <h3>More every week on Instagram</h3>
+    <p>Short reels on how AI tools really work and how to use Claude on real engineering work. Follow <b>@aditdev.ai</b>.</p>
+  </div>
+  <p class="small" style="margin-top:10pt">File names and settings checked against the official Claude Code docs (code.claude.com/docs) in November 2026. Claude Code changes often: if a command differs, the docs win.</p>
+</section>
+
+</body></html>

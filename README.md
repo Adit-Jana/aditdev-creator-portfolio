@@ -21,8 +21,10 @@ No framework, no build step, no dependencies. It is one `index.html`, one photo 
 | Why your AI forgets | Live demo: type into the box and watch the context window (the AI's "whiteboard") fill up. Old words fall off when it is full. |
 | What you'll learn | Three topic cards with a cursor spotlight. |
 | Start here | Three reels as dark cards that tilt in 3D. Each card opens its reel on Instagram. |
+| Free guides | Four PDF guides. Tapping one opens a 3-step unlock: follow on Instagram, DM the keyword, get the PDF in DMs. |
 | Comment AGENT | The 11 Claude skills for LinkedIn guide offer, linked to that reel. |
 | Myth or fact? | 4-card game. Pick Myth or Fact, the card flips with the answer, a score shows at the end. |
+| Trending on GitHub | The most-starred repos created in the last 7 days, AI-only or everything, refreshed daily by a GitHub Action and filtered for spam. |
 | Final call | Big headline whose letters jump when you hover them, a token network that follows your cursor (tap to send a pulse), floating topic pills and the Follow button. |
 
 ### Built to Apple's design standard
@@ -45,6 +47,16 @@ aditdev-creator-portfolio/
 ├── index.html    the whole site: content, styles (in <style>) and scripts (in <script>)
 ├── adit.png      profile photo used in the hero
 ├── favicon.svg   browser tab icon
+├── guides/
+│   ├── *.pdf     the four free guides (what you send in DMs)
+│   ├── src/      the guides as HTML + guide.css (edit these, not the PDFs)
+│   └── build.py  turns src/*.html into PDFs with Chrome
+├── data/
+│   └── trending.json   this week's trending repos (written by the Action)
+├── scripts/
+│   ├── fetch_trending.py       fetches and filters trending repos
+│   └── test_fetch_trending.py  checks the spam filter
+├── .github/workflows/trending.yml   runs fetch_trending.py every morning
 ├── .nojekyll     tells GitHub Pages to serve files as they are
 ├── .gitignore
 └── README.md
@@ -87,6 +99,46 @@ Everything lives in `index.html`. Search for the text you want to change.
 | Footer | `Made by Adit` | |
 
 After any change, refresh the browser. When you are happy, commit and push (see below).
+
+---
+
+## Free guides
+
+| Guide | DM keyword | PDF link to send |
+| --- | --- | --- |
+| 01 Claude Code setup guide | `SETUP` | https://adit-jana.github.io/aditdev-creator-portfolio/guides/claude-code-setup.pdf |
+| 02 Top 10 Claude skills for developers | `SKILLS` | https://adit-jana.github.io/aditdev-creator-portfolio/guides/top-10-dev-skills.pdf |
+| 03 Claude design and motion skills | `DESIGN` | https://adit-jana.github.io/aditdev-creator-portfolio/guides/claude-design-skills.pdf |
+| 04 Claude for your money | `MONEY` | https://adit-jana.github.io/aditdev-creator-portfolio/guides/claude-for-finance.pdf |
+
+**How delivery works:** the site asks visitors to follow @aditdev.ai and DM the keyword. Reply to each keyword with
+its PDF link, by hand or with a DM automation (for example an InstantDM or ManyChat keyword trigger).
+The PDFs are public files, so anyone with the link can open them; the keyword step is there to earn the follow.
+
+**Edit a guide:** change `guides/src/<name>.html` (styles in `guides/src/guide.css`), then rebuild all PDFs:
+
+```powershell
+python guides/build.py
+```
+
+The guide's text and the DM keyword live in two places on the site: the card in `index.html`
+(search `class="gcard`) and the `GUIDES` list in the script.
+
+---
+
+## Trending repos
+
+`.github/workflows/trending.yml` runs `scripts/fetch_trending.py` every day at 07:00 IST and commits
+`data/trending.json` when it changes. GitHub Pages then redeploys. Run it by hand from the repo's
+**Actions** tab → **Refresh trending repos** → **Run workflow**.
+
+"Most starred this week" on GitHub is full of star-farmed clones and hacking tools, so a repo is listed only
+if it has a readable description, a licence, real code, at least 15 forks, a sane fork and issue count, and none
+of the blocked words (bypass, exploit, crack, credential, proxy …). Test the filter with:
+
+```powershell
+cd scripts; python test_fetch_trending.py
+```
 
 ---
 

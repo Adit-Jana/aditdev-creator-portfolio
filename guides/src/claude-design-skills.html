@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Claude Design and Motion Skills · aditdev.ai</title><link rel="stylesheet" href="guide.css"></head>
+<body>
+
+<div class="cover">
+  <div class="top"><b>aditdev.ai</b><span>Free guide · November 2026</span></div>
+  <div>
+    <span class="kicker">GUIDE 03 · DESIGN + MOTION</span>
+    <h1>Claude skills for design, video and <em>motion graphics.</em></h1>
+    <p class="sub">The skills behind UI that doesn't look AI-made, animated explainers rendered from code, and posters, GIFs and generative art made from one prompt.</p>
+  </div>
+  <div class="inside">
+    <h3>Inside</h3>
+    <ol>
+      <li>Frontend design</li>
+      <li>UI UX Pro Max</li>
+      <li>Remotion (video in React)</li>
+      <li>HyperFrames (video in HTML)</li>
+      <li>GSAP skills</li>
+      <li>Canvas design</li>
+      <li>Algorithmic art</li>
+      <li>Theme factory</li>
+      <li>Slack GIF creator</li>
+      <li>Design critique</li>
+    </ol>
+  </div>
+  <div class="foot"><span>By Adit · @aditdev.ai on Instagram</span><span>Every repo and command checked on GitHub, Nov 2026</span></div>
+</div>
+
+<section>
+  <h2><span class="n">01–02</span>Interfaces that look designed</h2>
+
+  <div class="card"><div class="hd"><span class="rank">01</span><span class="meta">anthropics/skills · frontend-design</span></div>
+    <h3>Frontend design</h3>
+    <p>Anthropic's skill for giving UI a clear visual direction: typography, palette and layout choices that don't read as a template.</p>
+    <p class="use"><b>Use it for:</b> landing pages, dashboards, portfolios. Tell it the mood ("calm, Apple-like, one accent colour") and it commits to it.</p>
+<pre>/plugin install frontend-design@claude-plugins-official</pre></div>
+
+  <div class="card"><div class="hd"><span class="rank">02</span><span class="meta">nextlevelbuilder/ui-ux-pro-max-skill · ~152k stars</span></div>
+    <h3>UI UX Pro Max</h3>
+    <p>A large design-intelligence skill: styles, colour palettes, font pairings, UX rules and chart types it searches before it builds, across many front-end stacks.</p>
+    <p class="use"><b>Use it for:</b> when you have no designer and need sound defaults fast.</p>
+<pre>/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill</pre></div>
+</section>
+
+<section>
+  <h2><span class="n">03–05</span>Video and motion graphics, from code</h2>
+  <p class="lead">These let Claude write animations as code you can edit, re-render and version in git. Great for explainer reels, product demos and animated captions.</p>
+
+  <div class="card"><div class="hd"><span class="rank">03</span><span class="meta">remotion-dev/skills · official Remotion skills</span></div>
+    <h3>Remotion</h3>
+    <p>Remotion makes videos with React. The official skills teach Claude Remotion's rules: timing with frames, captions, audio and video, maps, and rendering.</p>
+    <p class="use"><b>Use it for:</b> data-driven or templated videos, such as 20 variations of one reel with different text.</p>
+<pre>npx skills add remotion-dev/skills</pre></div>
+
+  <div class="card"><div class="hd"><span class="rank">04</span><span class="meta">heygen-com/hyperframes · ~87k stars</span></div>
+    <h3>HyperFrames</h3>
+    <p>HeyGen's open-source framework for video written as HTML and CSS. Claude composes scenes, and the CLI previews and renders them to MP4.</p>
+    <p class="use"><b>Use it for:</b> motion graphics and kinetic text when you already think in web design.</p>
+<pre>claude plugin marketplace add heygen-com/hyperframes
+claude plugin install hyperframes@hyperframes</pre></div>
+
+  <div class="card"><div class="hd"><span class="rank">05</span><span class="meta">greensock/gsap-skills · official GSAP skills</span></div>
+    <h3>GSAP</h3>
+    <p>Official skills from the GSAP team so Claude writes correct timelines, scroll-triggered animation and easing instead of guessing the API.</p>
+    <p class="use"><b>Use it for:</b> scroll animations on websites and animated scenes inside HyperFrames.</p>
+<pre>npx skills add https://github.com/greensock/gsap-skills</pre></div>
+
+  <div class="tip"><b>Which video tool?</b>Already use React → Remotion. Prefer plain HTML and CSS → HyperFrames. Animating a website → GSAP.</div>
+</section>
+
+<section>
+  <h2><span class="n">06–09</span>Posters, art, themes and GIFs</h2>
+  <p>All four are in Anthropic's skills repo. Install once:</p>
+<pre>/plugin marketplace add anthropics/skills
+/plugin install example-skills@anthropic-agent-skills</pre>
+
+  <div class="card"><div class="hd"><span class="rank">06</span><span class="meta">anthropics/skills · canvas-design</span></div>
+    <h3>Canvas design</h3>
+    <p>Creates finished visual pieces as PNG or PDF (posters, covers, art) by first writing a short design philosophy, then executing it.</p>
+    <p class="use"><b>Use it for:</b> event posters, thumbnails, one-off social graphics.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">07</span><span class="meta">anthropics/skills · algorithmic-art</span></div>
+    <h3>Algorithmic art</h3>
+    <p>Generative art in p5.js with seeded randomness, plus sliders to explore variations.</p>
+    <p class="use"><b>Use it for:</b> unique backgrounds, brand textures, loops for reels.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">08</span><span class="meta">anthropics/skills · theme-factory</span></div>
+    <h3>Theme factory</h3>
+    <p>Ten ready themes (colours and fonts) Claude can apply to slides, docs, reports and landing pages, or a new theme made on the spot.</p>
+    <p class="use"><b>Use it for:</b> making everything you produce look like one brand.</p></div>
+
+  <div class="card"><div class="hd"><span class="rank">09</span><span class="meta">anthropics/skills · slack-gif-creator</span></div>
+    <h3>Slack GIF creator</h3>
+    <p>Builds small animated GIFs that meet Slack's size limits, with validation tools and animation ideas.</p>
+    <p class="use"><b>Use it for:</b> reaction GIFs, tiny product teasers, team celebrations.</p></div>
+
+  <h2 style="margin-top:12pt"><span class="n">10</span>Check the design before you ship</h2>
+  <div class="card"><div class="hd"><span class="rank">10</span><span class="meta">anthropics/knowledge-work-plugins · design</span></div>
+    <h3>Design critique, accessibility review, UX copy</h3>
+    <p>Anthropic's design plugin for reviewing work: structured critique, accessibility checks, UX writing, design-system and handoff help.</p>
+<pre>/plugin marketplace add anthropics/knowledge-work-plugins
+/plugin install design@knowledge-work-plugins</pre></div>
+</section>
+
+<section>
+  <h2><span class="n">→</span>Prompts that get good results</h2>
+  <h3>A landing page that doesn't look AI-made</h3>
+<pre>Use the frontend-design skill. Build a one-page site for [product].
+Mood: calm and premium, like an Apple product page. One accent colour.
+Big type, lots of white space, one idea per section. Works in light and dark
+mode and at phone width. No purple gradients, no emoji, no stock icons.
+Before coding, tell me the palette, fonts and layout in 5 lines.</pre>
+
+  <h3>A 20-second animated explainer</h3>
+<pre>Use HyperFrames (or Remotion). Make a 1080x1920, 20-second explainer:
+"How a context window works". Scenes: (1) a chat filling a whiteboard,
+(2) the whiteboard gets full, (3) the oldest messages slide off.
+White background, navy text, one yellow highlight. Text on screen for at
+least 2 seconds per line. Show me a storyboard of 3 frames per scene first.</pre>
+
+  <h3>A poster in one shot</h3>
+<pre>Use canvas-design. A 4:5 poster for a workshop called "Ship with Claude".
+Swiss style, strong grid, one bold headline, date and place small at the
+bottom. Export PNG at 1080x1350.</pre>
+
+  <div class="end">
+    <h3>See these skills in action</h3>
+    <p>Most of my reels are built with these tools. Follow <b>@aditdev.ai</b> on Instagram for the breakdowns.</p>
+  </div>
+  <p class="small" style="margin-top:10pt">Star counts and commands from GitHub on 20 November 2026. If a command fails, the repo's README has the current one.</p>
+</section>
+
+</body></html>
