@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adit · aditdev.ai</title>
+<meta name="description" content="Adit decodes AI and tech for engineers. Short reels on how AI really works and how to use Claude on real work.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adit · aditdev.ai">
+<meta property="og:description" content="AI, decoded for people who ship. Short reels on how AI really works and how to use Claude on real work.">
+<meta property="og:image" content="adit.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F7FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#05070C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: Apple product-page rhythm. One idea per full-width band; motion only where it explains or responds to you. */
+:root{
+  --bg:#F5F7FB; --surface:#FFFFFF; --ink:#0B1B33; --ink2:#55647C; --line:#DDE4EF;
+  --accent:#1F5FD1; --powder:#DCE8F8; --sun:#F5C518; --portrait:#1B1B1D; --dim:#B7C2D3;
+  --glow:rgba(31,95,209,.14);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Consolas,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --navh:52px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#05070C; --surface:#0E1420; --ink:#F2F5FA; --ink2:#9AA8BD; --line:#1E2738;
+  --accent:#7FB0FF; --powder:#14233D; --sun:#F7CC3A; --dim:#2E394C; --glow:rgba(127,176,255,.16); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#05070C; --surface:#0E1420; --ink:#F2F5FA; --ink2:#9AA8BD; --line:#1E2738;
+  --accent:#7FB0FF; --powder:#14233D; --sun:#F7CC3A; --dim:#2E394C; --glow:rgba(127,176,255,.16); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1080px;margin:0 auto}
+.bleed{margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut)}
+h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.022em}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+
+/* nav + scroll progress */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:color-mix(in srgb,var(--bg) 78%,transparent);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+nav::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:calc(var(--prog,0) * 100%);background:var(--accent)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--navh)}
+.mark{font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+.mark span{color:var(--ink2);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;
+  text-decoration:none;background:var(--ink);color:var(--bg);transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s ease;will-change:transform}
+.btn:hover{opacity:.9}
+.btn:active{scale:.97}
+.btn.small{min-height:36px;padding:0 16px;font-size:14px}
+.link{color:var(--accent);text-decoration:none;font-weight:500;min-height:44px;display:inline-flex;align-items:center}
+.link:hover{text-decoration:underline}
+
+/* hero */
+.hero-shell{position:relative;isolation:isolate}
+#grid{position:absolute;inset:0;width:100%;height:100%;z-index:-1;
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 45%,#000 40%,transparent 100%);mask-image:radial-gradient(ellipse 70% 80% at 50% 45%,#000 40%,transparent 100%)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-block:88px 96px}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:1.02;font-weight:800;margin-top:14px}
+.dec{color:var(--accent);cursor:default}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sun) 62% 92%,transparent 92%)}
+:root[data-theme="dark"] .hero h1 em{color:var(--sun);background:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1 em{color:var(--sun);background:none}}
+.hero .lede{font-size:clamp(19px,2vw,22px);color:var(--ink2);margin-top:22px;max-width:30ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:32px}
+.tiltwrap{perspective:1000px}
+.portrait{position:relative;margin:0;border-radius:28px;overflow:hidden;background:var(--portrait);aspect-ratio:4/5;max-width:100%;
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 30px 60px -30px rgba(11,27,51,.45)}
+.portrait.live{transition:transform .08s linear}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.portrait::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--go,0);transition:opacity .4s ease;
+  background:radial-gradient(400px circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.22),transparent 60%)}
+.console{position:absolute;left:16px;right:16px;bottom:16px;border-radius:14px;background:rgba(14,18,28,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#E9EEF6;font-family:var(--mono);font-size:13px;padding:12px 14px;
+  border:1px solid rgba(255,255,255,.12);transform:translateZ(40px)}
+.console .bar{display:flex;gap:6px;margin-bottom:8px}
+.console .bar i{width:9px;height:9px;border-radius:50%;background:#5A6476}
+.console .bar i:first-child{background:#FF5F57}.console .bar i:nth-child(2){background:#FEBC2E}.console .bar i:nth-child(3){background:#28C840}
+.console .p{color:#7FB0FF}
+.caret{display:inline-block;width:8px;height:15px;background:#F7CC3A;vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:18px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track-m{display:flex;width:max-content;animation:slide 38s linear infinite}
+.marquee:hover .track-m{animation-play-state:paused}
+.track-m ul{display:flex;gap:44px;padding:0 22px 0 22px;margin:0;list-style:none}
+.track-m li{font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.02em;color:var(--ink2);white-space:nowrap;display:flex;align-items:center;gap:44px}
+.track-m li::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--sun)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* statement */
+.statement{padding-block:110px}
+.statement p{font-size:clamp(30px,4.6vw,56px);line-height:1.12;font-weight:700;letter-spacing:-.025em;max-width:22ch}
+.statement .w{color:var(--dim);transition:color .35s ease}
+.statement .w.on{color:var(--ink)}
+.statement .w.key.on{color:var(--accent)}
+
+/* sections */
+section.band{padding-block:96px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:44px;max-width:640px}
+.head h2{font-size:clamp(34px,4.6vw,56px);line-height:1.05;font-weight:800}
+.head p{color:var(--ink2);font-size:19px}
+
+/* pinned story */
+.story{height:400vh;border-top:1px solid var(--line);position:relative}
+.pin{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--navh));height:calc(100vh - var(--navh));height:calc(100svh - var(--navh));
+  display:flex;align-items:center}
+.pin .wrap{width:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.steps{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:22px}
+.steps li{padding-left:18px;border-left:2px solid var(--line);color:var(--dim);transition:color .4s ease,border-color .4s ease}
+.steps li b{display:block;font-size:22px;letter-spacing:-.015em;color:inherit}
+.steps li span{font-size:16px}
+.steps li.on{color:var(--ink2);border-color:var(--accent)}
+.steps li.on b{color:var(--ink)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,44px);min-height:360px;display:flex;flex-direction:column;gap:28px;justify-content:center;min-width:0}
+.stage .lbl{font-family:var(--mono);font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.08em}
+.toks{position:relative;display:flex;flex-wrap:wrap;gap:0;font-family:var(--mono);font-size:clamp(17px,2.4vw,24px);font-weight:600;padding-top:70px}
+.toks .t{white-space:pre;padding:6px 0;border-radius:9px;transition:all .5s cubic-bezier(.2,.8,.2,1)}
+.s1 .toks,.s2 .toks,.s3 .toks{gap:8px}
+.s1 .toks .t,.s2 .toks .t,.s3 .toks .t{padding:6px 10px;background:var(--powder)}
+.s1 .toks .t:nth-child(even),.s2 .toks .t:nth-child(even),.s3 .toks .t:nth-child(even){background:color-mix(in srgb,var(--sun) 35%,var(--surface))}
+.s2 .toks .t.q{outline:2px solid var(--accent);outline-offset:2px}
+#arcs{position:absolute;left:0;top:0;width:100%;height:76px;overflow:visible;pointer-events:none}
+#arcs path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset .9s ease}
+.s2 #arcs path,.s3 #arcs path{stroke-dashoffset:0}
+.s3 #arcs path{opacity:.25}
+.answer{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:clamp(17px,2.4vw,24px);font-weight:600;min-height:48px}
+.answer .t{padding:6px 10px;border-radius:9px;background:var(--ink);color:var(--bg);opacity:0;transform:translateY(10px) scale(.9);transition:all .4s cubic-bezier(.2,.8,.2,1)}
+.s3 .answer .t{opacity:1;transform:none}
+.s3 .answer .t:nth-child(3){transition-delay:.15s}.s3 .answer .t:nth-child(4){transition-delay:.3s}.s3 .answer .t:nth-child(5){transition-delay:.45s}.s3 .answer .t:nth-child(6){transition-delay:.6s}
+.answer .hint{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--ink2);align-self:center}
+.s3 .answer .hint{display:none}
+
+/* live demo */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,4vw,40px);display:grid;gap:22px}
+.demo label{font-weight:600;font-size:15px}
+.demo textarea{width:100%;min-height:96px;resize:vertical;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.meter{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.meter b{color:var(--ink)}
+.track{height:10px;border-radius:999px;background:var(--powder);overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .25s ease}
+.fill.full{background:var(--sun)}
+.board{display:flex;flex-wrap:wrap;gap:6px;min-height:44px;padding:14px;border-radius:14px;background:var(--bg);border:1px dashed var(--line)}
+.tok{font-family:var(--mono);font-size:13px;padding:4px 8px;border-radius:7px;background:var(--powder);color:var(--ink);transition:opacity .3s ease;animation:pop .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.tok.gone{opacity:.45;text-decoration:line-through;background:transparent;border:1px solid var(--line);animation:none}
+.verdict{font-size:19px;font-weight:600;min-height:1.5em}
+.verdict .flag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;margin-right:8px;vertical-align:2px;background:var(--powder);color:var(--accent)}
+.verdict .flag.warn{background:var(--sun);color:#0B1B33}
+.note{font-size:13px;color:var(--ink2)}
+
+/* spotlight cards */
+.spot{position:relative;overflow:hidden}
+.spot::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s ease;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 70%)}
+.spot:hover::before{opacity:1}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:border-color .3s ease}
+.tile:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.tile .ic{width:44px;height:44px;border-radius:12px;background:var(--powder);display:grid;place-items:center;color:var(--accent);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .ic{transform:rotate(-8deg) scale(1.08)}
+.tile h3{font-size:22px;font-weight:700;margin-top:8px}
+.tile p{color:var(--ink2)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px}
+.reel{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:300px;padding:28px;border-radius:24px;text-decoration:none;
+  background:var(--ink);color:var(--bg);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.reel.live{transition:transform .08s linear}
+.reel.spot::before{background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(247,204,58,.22),transparent 70%)}
+.reel .tag{font-family:var(--mono);font-size:12px;opacity:.7}
+.reel h3{font-size:28px;line-height:1.1;font-weight:800}
+.reel .go{font-weight:600;font-size:15px;display:flex;align-items:center;gap:6px}
+.reel .go b{color:var(--sun);transition:transform .3s ease}
+.reel:hover .go b{transform:translateX(5px)}
+
+/* guide */
+.guide{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,40px)}
+.kw{font-family:var(--mono);font-weight:600;font-size:clamp(28px,4vw,44px);padding:10px 20px;border-radius:16px;background:var(--sun);color:#0B1B33;letter-spacing:.04em}
+.guide h3{font-size:24px;font-weight:700}
+.guide p{color:var(--ink2);margin-top:6px}
+
+/* final */
+.final{text-align:center;padding-block:130px;border-top:1px solid var(--line)}
+.final h2{font-size:clamp(40px,6.5vw,80px);line-height:1.02;font-weight:800}
+.final p{color:var(--ink2);font-size:19px;margin:18px auto 32px;max-width:36ch}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:13px;color:var(--ink2)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* scroll reveal: progressive, content stays visible where unsupported */
+@supports (animation-timeline:view()){
+  .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes rise{from{transform:translateY(48px) scale(.97);opacity:.35}}
+}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-block:48px 64px}
+  .tiltwrap{max-width:420px}
+  .grid3,.reels{grid-template-columns:1fr}
+  .reel{min-height:200px}
+  section.band{padding-block:64px}
+  .statement{padding-block:72px}
+  .final{padding-block:88px}
+  .story{height:340vh}
+  .pin .wrap{grid-template-columns:1fr;gap:20px}
+  .steps{margin-top:12px;gap:0}
+  .steps li{display:none;border:0;padding:0}
+  .steps li.on{display:block}
+  .pin h2{font-size:30px}
+  .stage{min-height:300px}
+  .guide{grid-template-columns:1fr;justify-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+  .statement .w{color:var(--ink)}
+  .track-m{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main" class="bleed">
+  <div class="wrap">
+    <a class="mark" href="#top">aditdev<span>.ai</span></a>
+    <a class="btn small mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Follow</a>
+  </div>
+</nav>
+
+<div class="hero-shell bleed" id="top">
+  <canvas id="grid" aria-hidden="true"></canvas>
+  <header class="hero wrap">
+    <div>
+      <div class="eyebrow">@aditdev.ai · Decoding AI &amp; tech</div>
+      <h1>AI, <span class="dec" id="dec">decoded</span> for people who <em>ship.</em></h1>
+      <p class="lede">I'm Adit. I take AI tools apart, show you how they really work, and how to put Claude to work on real engineering tasks.</p>
+      <div class="ctas">
+        <a class="btn mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="link" href="#story">See how AI reads you ›</a>
+      </div>
+    </div>
+    <div class="tiltwrap">
+      <figure class="portrait" id="portrait">
+        <img src="adit.png" alt="Adit, smiling, arms crossed, in a black blazer">
+        <div class="console" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <span class="p">adit@console</span> ~ <span id="typed"></span><span class="caret"></span>
+        </div>
+      </figure>
+    </div>
+  </header>
+</div>
+
+<div class="marquee bleed" aria-label="Topics I cover">
+  <div class="track-m">
+    <ul><li>Claude Code</li><li>Context windows</li><li>RAG</li><li>MCP</li><li>Tokens</li><li>AI agents</li><li>Prompting</li><li>AI security</li></ul>
+    <ul aria-hidden="true"><li>Claude Code</li><li>Context windows</li><li>RAG</li><li>MCP</li><li>Tokens</li><li>AI agents</li><li>Prompting</li><li>AI security</li></ul>
+  </div>
+</div>
+
+<section class="statement" aria-label="What I do">
+  <div class="wrap">
+    <p id="stmt">Most AI content tells you what's new. I show you how it works under the hood, so you can use it on real work on Monday morning.</p>
+  </div>
+</section>
+
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="pin">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Scroll to decode</div>
+        <h2 id="story-h" style="font-size:clamp(30px,4vw,48px);font-weight:800;line-height:1.05;margin-top:10px">How an AI reads your question.</h2>
+        <ol class="steps" id="steps">
+          <li class="on"><b>You type a question.</b><span>To you, it's one sentence.</span></li>
+          <li><b>It's cut into tokens.</b><span>Small chunks of text. The model only ever sees these.</span></li>
+          <li><b>Each token looks back at the others.</b><span>That's attention: the model weighs which earlier words matter.</span></li>
+          <li><b>It writes the answer one token at a time.</b><span>Every new word is a prediction. That's all a reply is.</span></li>
+        </ol>
+      </div>
+      <div class="stage s0" id="stage">
+        <div class="lbl" id="lbl">Step 1 of 4 · your prompt</div>
+        <div class="toks" id="toks">
+          <svg id="arcs" aria-hidden="true"></svg>
+          <span class="t">Why</span><span class="t"> does</span><span class="t"> my</span><span class="t"> AI</span><span class="t"> forget</span><span class="t q">?</span>
+        </div>
+        <div class="answer" aria-label="Model answer"><span class="hint">The answer appears here…</span><span class="t">Its</span><span class="t"> whiteboard</span><span class="t"> is</span><span class="t"> full</span><span class="t">.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="demo">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Try it yourself</div>
+      <h2>Why your AI forgets.</h2>
+      <p>That whiteboard is the context window, the model's short-term memory. Type below and watch it fill up.</p>
+    </div>
+    <div class="demo reveal">
+      <label for="chat">Your conversation</label>
+      <textarea id="chat">My project uses Postgres and the API is in Go. Please keep every answer short and always write tests. Now refactor the payments module and add retries to the webhook handler and update the docs and</textarea>
+      <div class="chips" aria-label="Quick add">
+        <button class="chip" type="button" data-add="and fix the login bug">+ fix the login bug</button>
+        <button class="chip" type="button" data-add="and also write the release notes">+ write release notes</button>
+        <button class="chip" type="button" data-clear>New chat</button>
+      </div>
+      <div>
+        <div class="meter"><span>Whiteboard space</span><span><b id="used">0</b> / <span>24</span> tokens</span></div>
+        <div class="track" role="progressbar" aria-label="Whiteboard space used" aria-valuemin="0" aria-valuemax="24" id="bar"><div class="fill" id="fill"></div></div>
+      </div>
+      <div class="board" id="board" aria-live="polite"></div>
+      <p class="verdict" id="verdict"></p>
+      <p class="note">Simplified on purpose: one word counts as one token here, and the whiteboard holds 24. Real models hold hundreds of thousands, but the rule is the same: when it's full, the oldest words fall off first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="topics-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">What you'll learn</div>
+      <h2 id="topics-h">Three things, done properly.</h2>
+    </div>
+    <div class="grid3">
+      <article class="tile spot reveal">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Under the hood</h3>
+        <p>Tokens, context windows, RAG, MCP. One idea per reel, in plain words a non-tech friend can follow.</p>
+      </article>
+      <article class="tile spot reveal">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></div>
+        <h3>Claude on real work</h3>
+        <p>Claude Code on actual engineering tasks, plus the setups that stop it breaking forty of your files.</p>
+      </article>
+      <article class="tile spot reveal">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>AI, safely</h3>
+        <p>Real AI incidents and security slips, broken down so you know what to check before you trust a tool.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="start-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Start here</div>
+      <h2 id="start-h">The reels people watch most.</h2>
+    </div>
+    <div class="reels">
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
+        <span class="tag">reel · claude</span><h3>Claude runs your LinkedIn.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      </a>
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
+        <span class="tag">reel · under the hood</span><h3>Why your AI forgets.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      </a>
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
+        <span class="tag">reel · prompts</span><h3>200+ animations from prompts.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="guide-h">
+  <div class="wrap">
+    <div class="guide spot reveal">
+      <span class="kw">AGENT</span>
+      <div>
+        <h3 id="guide-h">Want the 12 Claude skills for LinkedIn?</h3>
+        <p>Comment the word on the Claude + LinkedIn reel and the guide lands in your DMs.</p>
+      </div>
+      <a class="btn mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Open the reel</a>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="final-h">
+  <div class="wrap reveal">
+    <h2 id="final-h">Understand AI.<br>Then use it.</h2>
+    <p>Short reels for working engineers. No hype, no fake numbers, every claim checked.</p>
+    <a class="btn mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Follow @aditdev.ai</a>
+  </div>
+</section>
+
+<footer class="bleed">
+  <div class="wrap"><span>© 2026 Adit · aditdev.ai</span><span>Made by Adit</span></div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  /* 1. "decoded" scrambles into place on load and on hover */
+  const dec = document.getElementById('dec'), word = dec.textContent, glyphs = '01<>/{}#%&$ABCDEFXZ';
+  function scramble() {
+    if (reduce) return;
+    let f = 0;
+    const id = setInterval(() => {
+      dec.textContent = [...word].map((c, i) => i < f / 3 ? c : glyphs[Math.random() * glyphs.length | 0]).join('');
+      if (++f > word.length * 3) { clearInterval(id); dec.textContent = word; }
+    }, 40);
+  }
+  scramble();
+  dec.addEventListener('mouseenter', scramble);
+
+  /* 2. console typing */
+  const lines = ['decode --topic "context window"', 'claude --task "real work"', 'follow @aditdev.ai'];
+  const out = document.getElementById('typed');
+  if (reduce) out.textContent = lines[2];
+  else {
+    let li = 0, ci = 0, del = false;
+    (function tick() {
+      const s = lines[li]; out.textContent = s.slice(0, ci);
+      if (!del && ci < s.length) { ci++; return setTimeout(tick, 55); }
+      if (!del) { del = true; return setTimeout(tick, 1600); }
+      if (ci > 0) { ci--; return setTimeout(tick, 22); }
+      del = false; li = (li + 1) % lines.length; setTimeout(tick, 300);
+    })();
+  }
+
+  /* 3. hero dot grid: a field of "tokens" that lights up around your cursor */
+  const cv = document.getElementById('grid'), cx = cv.getContext('2d'), shell = cv.parentElement;
+  let W = 0, H = 0, dpr = 1, mx = -999, my = -999, t0 = performance.now(), running = false, cols = {};
+  function size() {
+    dpr = Math.min(2, devicePixelRatio || 1); W = shell.clientWidth; H = shell.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = { dim: css('--dim'), acc: css('--accent') }; draw(performance.now());
+  }
+  function draw(now) {
+    cx.clearRect(0, 0, W, H);
+    const gap = 26, t = (now - t0) / 1000;
+    for (let y = gap / 2; y < H; y += gap) for (let x = gap / 2; x < W; x += gap) {
+      const d = Math.hypot(x - mx, y - my), near = Math.max(0, 1 - d / 160);
+      const wave = reduce ? 0 : Math.max(0, Math.sin((x + y) / 120 - t * 1.2)) ** 8 * .6;
+      const k = Math.max(near, wave);
+      cx.globalAlpha = .35 + k * .65;
+      cx.fillStyle = k > .15 ? cols.acc : cols.dim;
+      cx.beginPath(); cx.arc(x, y, 1.1 + k * 1.8, 0, 6.283); cx.fill();
+    }
+    cx.globalAlpha = 1;
+  }
+  function loop(now) { if (!running) return; draw(now); requestAnimationFrame(loop); }
+  new IntersectionObserver(([e]) => {
+    running = e.isIntersecting && !reduce;
+    if (running) requestAnimationFrame(loop);
+  }).observe(shell);
+  shell.addEventListener('pointermove', e => { const r = shell.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; if (reduce) draw(0); });
+  shell.addEventListener('pointerleave', () => { mx = my = -999; });
+  addEventListener('resize', size);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', size);
+  new MutationObserver(size).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  size();
+
+  /* 4. 3D tilt (portrait + reel cards) and cursor spotlight */
+  function tilt(el, max) {
+    if (!fine || reduce) return;
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      el.classList.add('live');
+      el.style.setProperty('--ry', ((px - .5) * max * 2).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', ((.5 - py) * max * 2).toFixed(2) + 'deg');
+      el.style.setProperty('--gx', px * 100 + '%'); el.style.setProperty('--gy', py * 100 + '%'); el.style.setProperty('--go', 1);
+    });
+    el.addEventListener('pointerleave', () => { el.classList.remove('live'); ['--rx', '--ry'].forEach(p => el.style.setProperty(p, '0deg')); el.style.setProperty('--go', 0); });
+  }
+  tilt(document.getElementById('portrait'), 8);
+  document.querySelectorAll('.tilt').forEach(el => tilt(el, 6));
+  document.querySelectorAll('.spot').forEach(el => el.addEventListener('pointermove', e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', e.clientX - r.left + 'px'); el.style.setProperty('--my', e.clientY - r.top + 'px');
+  }));
+
+  /* 5. magnetic buttons */
+  if (fine && !reduce) document.querySelectorAll('.mag').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .3}px)`; });
+    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+  });
+
+  /* 6. scroll: progress bar, statement words, pinned story */
+  const nav = document.querySelector('nav');
+  const stmt = document.getElementById('stmt');
+  const parts = stmt.textContent.split(' '), a = parts.indexOf('under'), b = parts.indexOf('hood,'), c = parts.indexOf('real');
+  stmt.innerHTML = parts.map((w, i) => `<span class="w${(i >= a && i <= b) || (i >= c && i <= c + 1) ? ' key' : ''}">${w}</span>`).join(' ');
+  const words = [...stmt.querySelectorAll('.w')];
+  const story = document.getElementById('story'), stage = document.getElementById('stage'), steps = [...document.querySelectorAll('#steps li')];
+  const lbl = document.getElementById('lbl'), names = ['your prompt', 'tokens', 'attention', 'next-token prediction'];
+  let step = -1;
+  function drawArcs() {
+    const svg = document.getElementById('arcs'), toks = [...document.querySelectorAll('#toks .t')], box = svg.getBoundingClientRect();
+    const q = toks[toks.length - 1].getBoundingClientRect(), qx = q.left + q.width / 2 - box.left, base = 74;
+    svg.innerHTML = toks.slice(0, -1).map(t => {
+      const r = t.getBoundingClientRect(), x = r.left + r.width / 2 - box.left, h = Math.min(66, 22 + Math.abs(qx - x) * .22);
+      return `<path d="M${qx} ${base} Q ${(qx + x) / 2} ${base - h * 2} ${x} ${base}"/>`;
+    }).join('');
+  }
+  function onScroll() {
+    const vh = innerHeight, doc = document.documentElement;
+    nav.style.setProperty('--prog', (scrollY / Math.max(1, doc.scrollHeight - vh)).toFixed(4));
+    if (!reduce) {
+      const r = stmt.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .4)));
+      const n = Math.round(p * words.length); words.forEach((w, i) => w.classList.toggle('on', i < n));
+    }
+    const sr = story.getBoundingClientRect(), sp = Math.min(.999, Math.max(0, -sr.top / (sr.height - vh)));
+    const s = Math.floor(sp * 4);
+    if (s !== step) {
+      step = s; stage.className = 'stage s' + s;
+      steps.forEach((li, i) => li.classList.toggle('on', i === s));
+      lbl.textContent = `Step ${s + 1} of 4 · ${names[s]}`;
+      if (s >= 2) setTimeout(drawArcs, 520);
+    }
+  }
+  if (reduce) words.forEach(w => w.classList.add('on'));
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { onScroll(); if (step >= 2) drawArcs(); });
+  onScroll();
+
+  /* 7. context-window demo */
+  const CAP = 24, ta = document.getElementById('chat'), board = document.getElementById('board');
+  const fill = document.getElementById('fill'), used = document.getElementById('used'), bar = document.getElementById('bar'), verdict = document.getElementById('verdict');
+  const esc = s => s.replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  function render() {
+    const t = ta.value.trim().split(/\s+/).filter(Boolean), lost = Math.max(0, t.length - CAP), n = Math.min(t.length, CAP);
+    used.textContent = n; bar.setAttribute('aria-valuenow', n);
+    fill.style.width = n / CAP * 100 + '%'; fill.classList.toggle('full', lost > 0);
+    board.innerHTML = t.map((w, i) => `<span class="tok${i < lost ? ' gone' : ''}">${esc(w)}</span>`).join('');
+    if (!t.length) verdict.textContent = 'Empty whiteboard. Start typing.';
+    else if (!lost) verdict.innerHTML = '<span class="flag">Fits</span>The AI can still see everything you said.';
+    else verdict.innerHTML = `<span class="flag warn">Forgotten</span>${lost} word${lost > 1 ? 's' : ''} fell off, including “${esc(t.slice(0, lost).slice(-4).join(' '))}”.`;
+  }
+  ta.addEventListener('input', render);
+  document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+    ta.value = ch.hasAttribute('data-clear') ? '' : (ta.value.trim() + ' ' + ch.dataset.add).trim();
+    render(); ta.focus();
+  }));
+  render();
+})();
+</script>
+</body>
+</html>

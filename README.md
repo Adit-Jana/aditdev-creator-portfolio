@@ -1,0 +1,146 @@
+# aditdev.ai — creator portfolio
+
+The link-in-bio website for [@aditdev.ai](https://www.instagram.com/aditdev.ai/) on Instagram.
+One static page, Apple-style: it shows who Adit is, what he teaches, and turns a visitor into a follower.
+
+> AI, decoded for people who ship.
+
+No framework, no build step, no dependencies. It is one `index.html`, one photo and one icon.
+
+---
+
+## What is on the page
+
+| Section | What it does |
+| --- | --- |
+| Top bar | Wordmark, a **Follow** button that stays on screen, and a thin blue line that shows how far you have scrolled. |
+| Hero | Headline where the word "decoded" unscrambles from code symbols. A dot grid lights up around your cursor. Your photo tilts in 3D with a floating `adit@console` terminal. |
+| Topic strip | Scrolling list of topics (Claude Code, RAG, MCP …). Stops when you hover over it. |
+| Statement | One sentence whose words light up as you scroll. |
+| How an AI reads your question | Stays in place while you scroll through 4 steps: sentence, tokens, attention lines, answer written one token at a time. |
+| Why your AI forgets | Live demo: type into the box and watch the context window (the AI's "whiteboard") fill up. Old words fall off when it is full. |
+| What you'll learn | Three topic cards with a cursor spotlight. |
+| Start here | Three top reels as dark cards that tilt in 3D. |
+| Comment AGENT | The 12 Claude skills for LinkedIn guide offer. |
+| Final call | Big "Follow @aditdev.ai" button. |
+
+### Built to Apple's design standard
+
+- One idea per section, generous white space, one accent colour plus one yellow highlight.
+- Apple's own font (SF Pro) on iPhone and Mac, Inter everywhere else.
+- Light and dark mode follow the visitor's phone setting.
+- Every button and link is at least 44 px tall, so it is easy to tap.
+- Visible keyboard focus on every control.
+- **Reduced motion:** if the visitor's phone is set to reduce motion, every animation is switched off and the page is still complete.
+- Cursor effects (tilt, spotlight, magnetic buttons) run only on devices with a mouse. Phones get the clean version.
+- No fake numbers or follower counts anywhere.
+
+---
+
+## Files
+
+```
+aditdev.ai-creator-portfolio/
+├── index.html    the whole site: content, styles (in <style>) and scripts (in <script>)
+├── adit.png      profile photo used in the hero
+├── favicon.svg   browser tab icon
+├── .nojekyll     tells GitHub Pages to serve files as they are
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Run it on your computer
+
+Any static file server works. With Python (already on this machine):
+
+```powershell
+cd "C:\Users\aditj\Downloads\Creator Target 2026\aditdev.ai-creator-portfolio"
+python -m http.server 5178
+```
+
+Then open <http://localhost:5178> in your browser. Press `Ctrl+C` in the terminal to stop.
+
+Opening `index.html` by double-clicking also works, but a server is closer to the real hosted site.
+
+---
+
+## How to change things
+
+Everything lives in `index.html`. Search for the text you want to change.
+
+| To change | Search for | Notes |
+| --- | --- | --- |
+| Headline | `people who` | The word inside `<span class="dec" id="dec">` is the one that scrambles. |
+| Intro line under the headline | `class="lede"` | |
+| Instagram link | `instagram.com/aditdev.ai` | Used on every Follow button and reel card. |
+| Reel cards | `class="reel spot tilt reveal"` | Each card's `href` currently opens the profile. Paste the exact reel URL to link the reel itself. |
+| Topic strip | `class="track-m"` | Edit both `<ul>` lists the same way. The second one makes the loop seamless. |
+| Terminal lines | `const lines =` | The commands typed in the console on the photo. |
+| Context-window demo size | `const CAP = 24` | Also update the `24` in the meter text and `aria-valuemax`. |
+| AGENT offer | `class="kw"` | Keyword, title and button link. |
+| Colours | `:root{` at the top of `<style>` | Light colours first, dark colours in the two blocks below it. Change both. |
+| Photo | `adit.png` | Replace the file with a new one of the same name. Portrait (4:5) works best. |
+| Footer | `Made by Adit` | |
+
+After any change, refresh the browser. When you are happy, commit and push (see below).
+
+---
+
+## Put it online (free, with GitHub Pages)
+
+1. Open the repository on GitHub → **Settings** → **Pages**.
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Choose branch **main** and folder **/ (root)**, then **Save**.
+4. Wait 1–2 minutes. The site will be live at
+   `https://<your-github-username>.github.io/aditdev.ai-creator-portfolio/`
+
+Every push to `main` updates the live site automatically.
+
+### Use your own domain (optional, recommended)
+
+A short domain such as `aditdev.ai` looks far better in an Instagram bio.
+
+1. Buy the domain from any registrar.
+2. In **Settings → Pages → Custom domain**, enter the domain and save. GitHub adds a `CNAME` file to the repo.
+3. At your registrar, add the DNS records GitHub shows (four `A` records for the root domain, or a `CNAME` record for `www`).
+4. When the domain check passes, tick **Enforce HTTPS**.
+
+### Link preview image
+
+When the site is live, change the `og:image` line in `index.html` to the full address of the photo, for example
+`https://aditdev.ai/adit.png`. Instagram, WhatsApp and LinkedIn need the full address to show the preview picture.
+
+---
+
+## Add it to Instagram
+
+1. Instagram → your profile → **Edit profile** → **Links** → **Add external link**.
+2. Paste the live site address and give it a title such as `Start here`.
+3. Open the link from your profile on your phone once to check it.
+
+---
+
+## Update the site
+
+```powershell
+cd "C:\Users\aditj\Downloads\Creator Target 2026\aditdev.ai-creator-portfolio"
+git add -A
+git commit -m "Describe what you changed"
+git push
+```
+
+---
+
+## Checklist before each update
+
+- [ ] Opens without errors on phone and desktop.
+- [ ] Works in light and dark mode.
+- [ ] No sideways scrolling on a phone.
+- [ ] Every link opens the right place.
+- [ ] Any number or claim on the page is true.
+
+---
+
+Made by Adit · [@aditdev.ai](https://www.instagram.com/aditdev.ai/) · © 2026 All rights reserved.
