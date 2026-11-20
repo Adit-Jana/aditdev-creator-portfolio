@@ -20,9 +20,10 @@ No framework, no build step, no dependencies. It is one `index.html`, one photo 
 | How an AI reads your question | Stays in place while you scroll through 4 steps: sentence, tokens, attention lines, answer written one token at a time. |
 | Why your AI forgets | Live demo: type into the box and watch the context window (the AI's "whiteboard") fill up. Old words fall off when it is full. |
 | What you'll learn | Three topic cards with a cursor spotlight. |
-| Start here | Three top reels as dark cards that tilt in 3D. |
-| Comment AGENT | The 12 Claude skills for LinkedIn guide offer. |
-| Final call | Big "Follow @aditdev.ai" button. |
+| Start here | Three reels as dark cards that tilt in 3D. Each card opens its reel on Instagram. |
+| Comment AGENT | The 11 Claude skills for LinkedIn guide offer, linked to that reel. |
+| Myth or fact? | 4-card game. Pick Myth or Fact, the card flips with the answer, a score shows at the end. |
+| Final call | Big headline whose letters jump when you hover them, a token network that follows your cursor (tap to send a pulse), floating topic pills and the Follow button. |
 
 ### Built to Apple's design standard
 
@@ -75,7 +76,8 @@ Everything lives in `index.html`. Search for the text you want to change.
 | Headline | `people who` | The word inside `<span class="dec" id="dec">` is the one that scrambles. |
 | Intro line under the headline | `class="lede"` | |
 | Instagram link | `instagram.com/aditdev.ai` | Used on every Follow button and reel card. |
-| Reel cards | `class="reel spot tilt reveal"` | Each card's `href` currently opens the profile. Paste the exact reel URL to link the reel itself. |
+| Reel cards | `class="reel spot tilt reveal"` | Each card links to one reel. Swap the `href` and the `<h3>` text to feature a different reel. |
+| Myth or fact cards | `const Q = [` | Each item: the statement `q`, the answer `a` (true = fact), and the explanation `why`. |
 | Topic strip | `class="track-m"` | Edit both `<ul>` lists the same way. The second one makes the loop seamless. |
 | Terminal lines | `const lines =` | The commands typed in the console on the photo. |
 | Context-window demo size | `const CAP = 24` | Also update the `24` in the meter text and `aria-valuemax`. |

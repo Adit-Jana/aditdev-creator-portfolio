@@ -195,10 +195,42 @@ section.band{padding-block:96px;border-top:1px solid var(--line)}
 .guide h3{font-size:24px;font-weight:700}
 .guide p{color:var(--ink2);margin-top:6px}
 
+/* myth or fact */
+.qbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:-20px 0 20px;font-weight:600;font-variant-numeric:tabular-nums}
+.qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.qcard{perspective:1200px;min-height:250px;min-width:0}
+.qin{position:relative;height:100%;min-height:250px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.qcard.done .qin{transform:rotateY(180deg)}
+.qface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;padding:26px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:18px;border:1px solid var(--line);background:var(--surface)}
+.qface.back{transform:rotateY(180deg);background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.qn{font-family:var(--mono);font-size:12px;color:var(--ink2);letter-spacing:.06em}
+.qface h3{font-size:clamp(20px,2.2vw,24px);line-height:1.2;font-weight:700}
+.qbtns{display:flex;gap:10px}
+.qbtns button{flex:1;min-height:48px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:700;font-size:16px;cursor:pointer;transition:transform .2s ease,border-color .2s ease}
+.qbtns button:hover{border-color:var(--accent);transform:translateY(-2px)}
+.verdict-q{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:22px}
+.verdict-q i{font-style:normal;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:7px;background:var(--sun);color:#0B1B33}
+.verdict-q.no i{background:#FF8A7A}
+.qface.back p{opacity:.85;font-size:16px}
+.qdone{grid-column:1/-1;text-align:center;padding:26px;border-radius:24px;background:var(--powder);font-size:19px;font-weight:600}
+
 /* final */
-.final{text-align:center;padding-block:130px;border-top:1px solid var(--line)}
-.final h2{font-size:clamp(40px,6.5vw,80px);line-height:1.02;font-weight:800}
-.final p{color:var(--ink2);font-size:19px;margin:18px auto 32px;max-width:36ch}
+.final{position:relative;isolation:isolate;text-align:center;padding-block:150px 130px;border-top:1px solid var(--line);margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut);overflow:hidden;cursor:crosshair}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.final .eyebrow{margin-bottom:18px}
+.final h2{font-size:clamp(44px,8vw,104px);line-height:1;font-weight:800;letter-spacing:-.035em}
+.final h2 .ln{display:block}
+.final h2 .ch{display:inline-block;transition:transform .45s cubic-bezier(.2,.8,.2,1),color .3s ease}
+.final h2 .ch:hover{transform:translateY(-10px) rotate(-4deg);color:var(--accent)}
+.final h2 .ln:last-child{color:var(--accent)}
+.final h2 .ln:last-child .ch:hover{color:var(--sun)}
+.final p{color:var(--ink2);font-size:19px;margin:22px auto 32px;max-width:36ch}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:44px}
+.pills span{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 80%,transparent);font-size:14px;font-weight:600;color:var(--ink2);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:float 6s ease-in-out infinite}
+.pills span:nth-child(2){animation-delay:-1.2s}.pills span:nth-child(3){animation-delay:-2.4s}.pills span:nth-child(4){animation-delay:-3.6s}.pills span:nth-child(5){animation-delay:-4.8s}
+@keyframes float{50%{transform:translateY(-6px)}}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:13px;color:var(--ink2)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -224,6 +256,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .pin h2{font-size:30px}
   .stage{min-height:300px}
   .guide{grid-template-columns:1fr;justify-items:start}
+  .qgrid{grid-template-columns:1fr}
+  .final{padding-block:100px 90px}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -360,17 +394,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="head reveal">
       <div class="eyebrow">Start here</div>
-      <h2 id="start-h">The reels people watch most.</h2>
+      <h2 id="start-h">Start with these three.</h2>
     </div>
     <div class="reels">
-      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
-        <span class="tag">reel · claude</span><h3>Claude runs your LinkedIn.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/reel/DfUlTd6upDa/" target="_blank" rel="noopener">
+        <span class="tag">reel · claude + linkedin</span><h3>Claude skills that run your LinkedIn.</h3><span class="go">Watch the reel <b>›</b></span>
       </a>
-      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
-        <span class="tag">reel · under the hood</span><h3>Why your AI forgets.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/reel/DfKEIwaOFv4/" target="_blank" rel="noopener">
+        <span class="tag">reel · under the hood</span><h3>Why your AI forgets.</h3><span class="go">Watch the reel <b>›</b></span>
       </a>
-      <a class="reel spot tilt reveal" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">
-        <span class="tag">reel · prompts</span><h3>200+ animations from prompts.</h3><span class="go">Watch on Instagram <b>›</b></span>
+      <a class="reel spot tilt reveal" href="https://www.instagram.com/reel/DfOSoU9PJzb/" target="_blank" rel="noopener">
+        <span class="tag">reel · claude code</span><h3>7 habits that stop a fake "done".</h3><span class="go">Watch the reel <b>›</b></span>
       </a>
     </div>
   </div>
@@ -381,19 +415,36 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="guide spot reveal">
       <span class="kw">AGENT</span>
       <div>
-        <h3 id="guide-h">Want the 12 Claude skills for LinkedIn?</h3>
-        <p>Comment the word on the Claude + LinkedIn reel and the guide lands in your DMs.</p>
+        <h3 id="guide-h">Want the 11 Claude skills for LinkedIn?</h3>
+        <p>Comment the word on the Claude + LinkedIn reel and the setup guide lands in your DMs.</p>
       </div>
-      <a class="btn mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Open the reel</a>
+      <a class="btn mag" href="https://www.instagram.com/reel/DfUlTd6upDa/" target="_blank" rel="noopener">Open the reel</a>
     </div>
   </div>
 </section>
 
+<section class="band quiz" aria-labelledby="quiz-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">60-second game</div>
+      <h2 id="quiz-h">Myth or fact?</h2>
+      <p>Four things people believe about AI. Pick an answer and the card flips.</p>
+    </div>
+    <div class="qbar reveal"><span id="qscore">0 of 4 answered</span><button class="chip" type="button" id="qreset">Play again</button></div>
+    <div class="qgrid" id="qgrid"></div>
+  </div>
+</section>
+
 <section class="final" aria-labelledby="final-h">
-  <div class="wrap reveal">
-    <h2 id="final-h">Understand AI.<br>Then use it.</h2>
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Move your cursor · tap anywhere</div>
+    <h2 id="final-h" aria-label="Understand AI. Then use it."><span class="ln">Understand AI.</span><span class="ln">Then use it.</span></h2>
     <p>Short reels for working engineers. No hype, no fake numbers, every claim checked.</p>
     <a class="btn mag" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Follow @aditdev.ai</a>
+    <div class="pills" aria-label="What I cover">
+      <span>Claude Code</span><span>Context windows</span><span>RAG</span><span>MCP</span><span>AI security</span>
+    </div>
   </div>
 </section>
 
@@ -544,6 +595,97 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     else if (!lost) verdict.innerHTML = '<span class="flag">Fits</span>The AI can still see everything you said.';
     else verdict.innerHTML = `<span class="flag warn">Forgotten</span>${lost} word${lost > 1 ? 's' : ''} fell off, including “${esc(t.slice(0, lost).slice(-4).join(' '))}”.`;
   }
+  /* 8. myth or fact game */
+  const Q = [
+    { q: 'AI reads your message word by word, like you do.', a: false, why: 'It reads tokens: small chunks of text, often pieces of words.' },
+    { q: 'A long chat can push your first instructions out of the AI\'s memory.', a: true, why: 'The context window has a limit. When it fills up, older messages get dropped or squashed.' },
+    { q: 'Chatbots look up every answer on the internet.', a: false, why: 'By default they answer from what they learned in training. Web search is an extra tool that has to be switched on.' },
+    { q: 'Every word of an AI reply is a prediction.', a: true, why: 'The model picks the most likely next token, then the next, one at a time.' }
+  ];
+  const qgrid = document.getElementById('qgrid'), qscore = document.getElementById('qscore');
+  let answered = 0, right = 0;
+  function buildQuiz() {
+    answered = right = 0; qscore.textContent = '0 of 4 answered';
+    qgrid.innerHTML = Q.map((c, i) => `
+      <div class="qcard" data-i="${i}">
+        <div class="qin">
+          <div class="qface front">
+            <span class="qn">${String(i + 1).padStart(2, '0')} / 04</span>
+            <h3>${c.q}</h3>
+            <div class="qbtns"><button type="button" data-v="0">Myth</button><button type="button" data-v="1">Fact</button></div>
+          </div>
+          <div class="qface back" aria-live="polite"></div>
+        </div>
+      </div>`).join('');
+  }
+  qgrid.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-v]'); if (!btn) return;
+    const card = btn.closest('.qcard'), c = Q[card.dataset.i], ok = (btn.dataset.v === '1') === c.a;
+    card.querySelector('.back').innerHTML = `<span class="qn" style="color:inherit;opacity:.6">${c.a ? 'FACT' : 'MYTH'}</span>
+      <span class="verdict-q${ok ? '' : ' no'}"><i>${ok ? 'Correct' : 'Not quite'}</i></span><p>${c.why}</p>`;
+    card.classList.add('done'); card.querySelectorAll('.front button').forEach(b => b.disabled = true);
+    answered++; if (ok) right++;
+    qscore.textContent = `${answered} of 4 answered · ${right} right`;
+    if (answered === Q.length) qgrid.insertAdjacentHTML('beforeend', `<div class="qdone">${right === 4 ? 'Perfect score. You already think like an engineer.' : `You got ${right} of 4. Every one of these has a reel behind it.`} <a class="link" href="https://www.instagram.com/aditdev.ai/" target="_blank" rel="noopener">Follow for the rest ›</a></div>`);
+  });
+  document.getElementById('qreset').addEventListener('click', buildQuiz);
+  buildQuiz();
+
+  /* 9. final: letters you can poke, and a token network that follows you */
+  document.querySelectorAll('.final h2 .ln').forEach(ln => {
+    ln.innerHTML = [...ln.textContent].map(ch => ch === ' ' ? ' ' : `<span class="ch" aria-hidden="true">${ch}</span>`).join('');
+  });
+  const net = document.getElementById('net'), nx = net.getContext('2d'), fin = net.parentElement;
+  let NW = 0, NH = 0, nodes = [], pulses = [], px = -999, py = -999, netOn = false, ncol = {};
+  function netSize() {
+    const d = Math.min(2, devicePixelRatio || 1); NW = fin.clientWidth; NH = fin.clientHeight;
+    net.width = NW * d; net.height = NH * d; nx.setTransform(d, 0, 0, d, 0, 0);
+    ncol = { acc: css('--accent'), dim: css('--ink2'), ink: css('--ink2'), sun: css('--sun') };
+    const n = Math.round(Math.min(90, NW * NH / 14000));
+    nodes = Array.from({ length: n }, () => ({ x: Math.random() * NW, y: Math.random() * NH, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: 1.5 + Math.random() * 2 }));
+    netDraw();
+  }
+  function netDraw() {
+    nx.clearRect(0, 0, NW, NH);
+    for (const p of nodes) {
+      if (!reduce) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > NW) p.vx *= -1; if (p.y < 0 || p.y > NH) p.vy *= -1;
+        const dx = px - p.x, dy = py - p.y, d = Math.hypot(dx, dy);
+        if (d < 200 && d > 1) { p.x += dx / d * .6; p.y += dy / d * .6; }
+      }
+    }
+    nx.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 130) { nx.globalAlpha = (1 - d / 130) * .35; nx.strokeStyle = ncol.ink; nx.beginPath(); nx.moveTo(a.x, a.y); nx.lineTo(b.x, b.y); nx.stroke(); }
+    }
+    for (const p of nodes) {
+      const d = Math.hypot(px - p.x, py - p.y), near = d < 200;
+      if (near) { nx.globalAlpha = (1 - d / 200) * .8; nx.strokeStyle = ncol.acc; nx.beginPath(); nx.moveTo(px, py); nx.lineTo(p.x, p.y); nx.stroke(); }
+      let lit = near ? 1 - d / 200 : 0;
+      for (const q of pulses) { const pd = Math.abs(Math.hypot(q.x - p.x, q.y - p.y) - q.r); if (pd < 30) lit = Math.max(lit, 1 - pd / 30); }
+      nx.globalAlpha = .45 + lit * .55; nx.fillStyle = lit > .5 && pulses.length ? ncol.sun : lit > .1 ? ncol.acc : ncol.dim;
+      nx.beginPath(); nx.arc(p.x, p.y, p.r + lit * 2, 0, 6.283); nx.fill();
+    }
+    pulses = pulses.filter(q => (q.r += 6) < Math.max(NW, NH));
+    for (const q of pulses) { nx.globalAlpha = Math.max(0, .5 - q.r / Math.max(NW, NH)); nx.strokeStyle = ncol.sun; nx.lineWidth = 2; nx.beginPath(); nx.arc(q.x, q.y, q.r, 0, 6.283); nx.stroke(); }
+    nx.globalAlpha = 1;
+  }
+  (function netLoop() { if (netOn) netDraw(); requestAnimationFrame(netLoop); })();
+  new IntersectionObserver(([e]) => { netOn = e.isIntersecting && !reduce; }).observe(fin);
+  fin.addEventListener('pointermove', e => { const r = fin.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; if (reduce) netDraw(); });
+  fin.addEventListener('pointerleave', () => { px = py = -999; });
+  fin.addEventListener('pointerdown', e => {
+    if (e.target.closest('a,button')) return;
+    const r = fin.getBoundingClientRect(); pulses.push({ x: e.clientX - r.left, y: e.clientY - r.top, r: 0 });
+    for (let k = 0; k < 4; k++) nodes.push({ x: e.clientX - r.left, y: e.clientY - r.top, vx: (Math.random() - .5) * 2, vy: (Math.random() - .5) * 2, r: 1.5 + Math.random() * 2 });
+    if (nodes.length > 140) nodes.splice(0, nodes.length - 140);
+  });
+  addEventListener('resize', netSize);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', netSize);
+  netSize();
+
   ta.addEventListener('input', render);
   document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
     ta.value = ch.hasAttribute('data-clear') ? '' : (ta.value.trim() + ' ' + ch.dataset.add).trim();
