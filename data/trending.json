@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-20T12:31Z",
- "since": "2026-11-13",
+ "updated": "2026-11-21T08:28Z",
+ "since": "2026-11-14",
  "all": [
   {
    "name": "erkamyaman/rust-anything",
    "url": "https://github.com/erkamyaman/rust-anything",
    "description": "Rewrite your whole app in Rust, one piece at a time, checked against the original's recorded behavior at every step. CLIs, HTTP servers and libraries in TypeScript, Python, C, Go, ",
-   "stars": 5981,
+   "stars": 6905,
    "language": "Rust",
    "created": "2026-11-16"
   },
   {
-   "name": "haziqahmedqasmi/PeakCut",
-   "url": "https://github.com/haziqahmedqasmi/PeakCut",
-   "description": "AI clipping for long videos and live streams. Self-hosted, bring your own AI key.",
-   "stars": 1464,
+   "name": "iamajmeena/neonclipping",
+   "url": "https://github.com/iamajmeena/neonclipping",
+   "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
+   "stars": 1407,
    "language": "Python",
-   "created": "2026-11-14"
+   "created": "2026-11-19"
   },
   {
    "name": "sybil-solutions/inference-optimisation-skill",
    "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
    "description": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization",
-   "stars": 1289,
+   "stars": 1388,
    "language": "Python",
    "created": "2026-11-16"
   },
@@ -30,7 +30,7 @@
    "name": "joshpuckett/allo",
    "url": "https://github.com/joshpuckett/allo",
    "description": "Allo is your friendly neighborhood typeface, free and open source",
-   "stars": 1205,
+   "stars": 1268,
    "language": "Python",
    "created": "2026-11-15"
   },
@@ -38,32 +38,32 @@
    "name": "chuanqisun/spaceship",
    "url": "https://github.com/chuanqisun/spaceship",
    "description": "Steer ideas like a space pilot!",
-   "stars": 969,
+   "stars": 998,
    "language": "HTML",
    "created": "2026-11-16"
-  },
-  {
-   "name": "iamajmeena/neonclipping",
-   "url": "https://github.com/iamajmeena/neonclipping",
-   "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
-   "stars": 922,
-   "language": "Python",
-   "created": "2026-11-19"
-  },
-  {
-   "name": "n4ze3m/tiny-voca",
-   "url": "https://github.com/n4ze3m/tiny-voca",
-   "description": "A 4.5M-parameter two-voice English text-to-speech model, trained from scratch",
-   "stars": 781,
-   "language": "Python",
-   "created": "2026-11-14"
   },
   {
    "name": "siliconjungle/shapeshift-labs-ink-studio",
    "url": "https://github.com/siliconjungle/shapeshift-labs-ink-studio",
    "description": "Sculpting, animation and simulation toolkit for pixel-art Gaussian splats",
-   "stars": 768,
+   "stars": 897,
    "language": "JavaScript",
+   "created": "2026-11-16"
+  },
+  {
+   "name": "Lemxy/WinRust",
+   "url": "https://github.com/Lemxy/WinRust",
+   "description": "Windows shell replacement in Rust: taskbar, file manager, NTFS search, task manager, disk cleaner. One installer exe.",
+   "stars": 813,
+   "language": "Rust",
+   "created": "2026-11-17"
+  },
+  {
+   "name": "boringmarketer/boring-marketing-skills",
+   "url": "https://github.com/boringmarketer/boring-marketing-skills",
+   "description": "32 free marketing skills for your AI agent: research, positioning, copy, pages, SEO, AI search, ads, email and content, plus a deep local-business pack. MIT.",
+   "stars": 756,
+   "language": "Python",
    "created": "2026-11-16"
   }
  ],
@@ -72,57 +72,65 @@
    "name": "erkamyaman/rust-anything",
    "url": "https://github.com/erkamyaman/rust-anything",
    "description": "Rewrite your whole app in Rust, one piece at a time, checked against the original's recorded behavior at every step. CLIs, HTTP servers and libraries in TypeScript, Python, C, Go, ",
-   "stars": 5981,
+   "stars": 6905,
    "language": "Rust",
-   "created": "2026-11-16"
-  },
-  {
-   "name": "haziqahmedqasmi/PeakCut",
-   "url": "https://github.com/haziqahmedqasmi/PeakCut",
-   "description": "AI clipping for long videos and live streams. Self-hosted, bring your own AI key.",
-   "stars": 1464,
-   "language": "Python",
-   "created": "2026-11-14"
-  },
-  {
-   "name": "sybil-solutions/inference-optimisation-skill",
-   "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
-   "description": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization",
-   "stars": 1289,
-   "language": "Python",
    "created": "2026-11-16"
   },
   {
    "name": "iamajmeena/neonclipping",
    "url": "https://github.com/iamajmeena/neonclipping",
    "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
-   "stars": 922,
+   "stars": 1407,
    "language": "Python",
    "created": "2026-11-19"
+  },
+  {
+   "name": "sybil-solutions/inference-optimisation-skill",
+   "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+   "description": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization",
+   "stars": 1388,
+   "language": "Python",
+   "created": "2026-11-16"
   },
   {
    "name": "boringmarketer/boring-marketing-skills",
    "url": "https://github.com/boringmarketer/boring-marketing-skills",
    "description": "32 free marketing skills for your AI agent: research, positioning, copy, pages, SEO, AI search, ads, email and content, plus a deep local-business pack. MIT.",
-   "stars": 729,
+   "stars": 756,
    "language": "Python",
    "created": "2026-11-16"
   },
   {
-   "name": "mankidev/antialgorithm",
-   "url": "https://github.com/mankidev/antialgorithm",
-   "description": "Claude Code skill that steers the model away from its first, most average pick in creative work: names, ideas, posters, UI.",
-   "stars": 539,
-   "language": "Python",
-   "created": "2026-11-14"
+   "name": "diego3g/craft",
+   "url": "https://github.com/diego3g/craft",
+   "description": "Design skills for AI agents: /craft-setup writes your design brief, /craft designs screens with every state from your design system and reviews them. Works with Paper, pen.dev, Fig",
+   "stars": 322,
+   "language": "JavaScript",
+   "created": "2026-11-15"
   },
   {
    "name": "staryone/motlab",
    "url": "https://github.com/staryone/motlab",
    "description": "Video as code: canvas scenes rendered with WebCodecs in headless Chrome, a review viewer, and agent skills that build the video from your references.",
-   "stars": 246,
+   "stars": 308,
    "language": "JavaScript",
    "created": "2026-11-16"
+  },
+  {
+   "name": "INK-Q/agy-fast",
+   "url": "https://github.com/INK-Q/agy-fast",
+   "description": "Non-invasive MCP accelerator plugin for Google Antigravity (CLI/Desktop/IDE): cuts LLM turns (-34%), token quota (-31%), and upload traffic (-40%) without affecting native UI or di",
+   "stars": 214,
+   "language": "TypeScript",
+   "created": "2026-11-19"
+  },
+  {
+   "name": "danielwh2/sprite-stacking",
+   "url": "https://github.com/danielwh2/sprite-stacking",
+   "description": "Agent skill: turn four pixel art views into fake-3D sprites you can spin. Works with Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Pi.",
+   "stars": 212,
+   "language": "HTML",
+   "created": "2026-11-20"
   }
  ]
 }
