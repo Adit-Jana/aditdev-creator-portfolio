@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-25T10:00Z",
- "since": "2026-11-18",
+ "updated": "2026-11-26T09:43Z",
+ "since": "2026-11-19",
  "all": [
   {
    "name": "EL4CTEO/fast-anything",
    "url": "https://github.com/EL4CTEO/fast-anything",
    "description": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
-   "stars": 3770,
+   "stars": 4091,
    "language": "Rust",
    "created": "2026-11-21"
   },
@@ -14,57 +14,57 @@
    "name": "AFK-surf/xnulinux",
    "url": "https://github.com/AFK-surf/xnulinux",
    "description": "XNU as a loadable kernel module inside Linux (macOS personality for arm64 Linux)",
-   "stars": 3671,
+   "stars": 4078,
    "language": "C",
    "created": "2026-11-20"
-  },
-  {
-   "name": "iamajmeena/neonclipping",
-   "url": "https://github.com/iamajmeena/neonclipping",
-   "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
-   "stars": 2550,
-   "language": "Python",
-   "created": "2026-11-19"
-  },
-  {
-   "name": "omonkeyz/xbox-emulator",
-   "url": "https://github.com/omonkeyz/xbox-emulator",
-   "description": "Progress notes for running Xbox Series X|S builds on PC (TomBox + rage9)",
-   "stars": 1834,
-   "language": "Rust",
-   "created": "2026-11-21"
   },
   {
    "name": "os6/nospeaker",
    "url": "https://github.com/os6/nospeaker",
    "description": "make your macbook's trackpad talk using its haptic motor",
-   "stars": 1810,
+   "stars": 1916,
    "language": "Swift",
    "created": "2026-11-22"
   },
   {
-   "name": "INK-Q/agy-fast",
-   "url": "https://github.com/INK-Q/agy-fast",
-   "description": "Non-invasive MCP accelerator plugin for Google Antigravity (CLI/Desktop/IDE): cuts LLM turns (-34%), token quota (-31%), and upload traffic (-40%) without affecting native UI or di",
-   "stars": 1394,
-   "language": "TypeScript",
-   "created": "2026-11-19"
+   "name": "omonkeyz/xbox-emulator",
+   "url": "https://github.com/omonkeyz/xbox-emulator",
+   "description": "Progress notes for running Xbox Series X|S builds on PC (TomBox + rage9)",
+   "stars": 1849,
+   "language": "Rust",
+   "created": "2026-11-21"
   },
   {
-   "name": "Zettrox/ztrx",
-   "url": "https://github.com/Zettrox/ztrx",
-   "description": "Run the Xbox Series build of the game natively on Windows PCs with NVIDIA GPUs",
-   "stars": 1219,
+   "name": "avatarmanz/VIctory-7900XTX",
+   "url": "https://github.com/avatarmanz/VIctory-7900XTX",
+   "description": "Goal: an Xbox Series title (your own dump) at a stable 30+ fps on PC without ray tracing, then higher. Porting, not emulating: renderer patches + ahead-of-time shaders, RX 7900 XTX",
+   "stars": 1385,
    "language": "Rust",
    "created": "2026-11-25"
+  },
+  {
+   "name": "leanprover-community/riemann-hypothesis",
+   "url": "https://github.com/leanprover-community/riemann-hypothesis",
+   "description": "Lean formalization of the Riemann Hypothesis (Alpöge, 2026-11-20) being cleaned up by members of the Lean community.",
+   "stars": 1333,
+   "language": "Lean",
+   "created": "2026-11-20"
   },
   {
    "name": "Avaneesh-Inamdar/Stream-Tube-Desktop",
    "url": "https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop",
    "description": "Native YouTube client for Windows in Rust, with SponsorBlock, DeArrow and Return YouTube Dislike built in",
-   "stars": 1025,
+   "stars": 1328,
    "language": "Rust",
    "created": "2026-11-22"
+  },
+  {
+   "name": "qianyiai/kurocat",
+   "url": "https://github.com/qianyiai/kurocat",
+   "description": "KuroCat — Free open-source 3D/2D desktop typing cat & AI coding companion (Bongo Cat alternative · Tauri v2 + Rust + MCP · Claude/Codex/DeepSeek/OBS · Win/Mac/Linux/Android)｜开源3D桌面",
+   "stars": 1214,
+   "language": "TypeScript",
+   "created": "2026-11-21"
   }
  ],
  "ai": [
@@ -72,31 +72,23 @@
    "name": "EL4CTEO/fast-anything",
    "url": "https://github.com/EL4CTEO/fast-anything",
    "description": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
-   "stars": 3770,
+   "stars": 4091,
    "language": "Rust",
    "created": "2026-11-21"
   },
   {
-   "name": "iamajmeena/neonclipping",
-   "url": "https://github.com/iamajmeena/neonclipping",
-   "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
-   "stars": 2550,
-   "language": "Python",
-   "created": "2026-11-19"
-  },
-  {
-   "name": "INK-Q/agy-fast",
-   "url": "https://github.com/INK-Q/agy-fast",
-   "description": "Non-invasive MCP accelerator plugin for Google Antigravity (CLI/Desktop/IDE): cuts LLM turns (-34%), token quota (-31%), and upload traffic (-40%) without affecting native UI or di",
-   "stars": 1394,
+   "name": "qianyiai/kurocat",
+   "url": "https://github.com/qianyiai/kurocat",
+   "description": "KuroCat — Free open-source 3D/2D desktop typing cat & AI coding companion (Bongo Cat alternative · Tauri v2 + Rust + MCP · Claude/Codex/DeepSeek/OBS · Win/Mac/Linux/Android)｜开源3D桌面",
+   "stars": 1214,
    "language": "TypeScript",
-   "created": "2026-11-19"
+   "created": "2026-11-21"
   },
   {
    "name": "danielwh2/sprite-stacking",
    "url": "https://github.com/danielwh2/sprite-stacking",
    "description": "Agent skill: turn four pixel art views into fake-3D sprites you can spin. Works with Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Pi.",
-   "stars": 845,
+   "stars": 983,
    "language": "HTML",
    "created": "2026-11-20"
   },
@@ -104,7 +96,7 @@
    "name": "sous-labs/songe",
    "url": "https://github.com/sous-labs/songe",
    "description": "A training engine for your local model, using your idle compute",
-   "stars": 773,
+   "stars": 886,
    "language": "Python",
    "created": "2026-11-20"
   },
@@ -112,15 +104,23 @@
    "name": "sybil-solutions/skill-distill",
    "url": "https://github.com/sybil-solutions/skill-distill",
    "description": "Distill a good Claude Code / Codex session into a skill an open-weight model can follow to reproduce the task",
-   "stars": 770,
+   "stars": 819,
    "language": "Python",
    "created": "2026-11-21"
+  },
+  {
+   "name": "alesha-pro/llm.asm",
+   "url": "https://github.com/alesha-pro/llm.asm",
+   "description": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, ",
+   "stars": 807,
+   "language": "Assembly",
+   "created": "2026-11-25"
   },
   {
    "name": "xikhar/papercraft",
    "url": "https://github.com/xikhar/papercraft",
    "description": "Agent skill to build games, interactive scenes, web pages and animations in a handcrafted pop-up papercraft style",
-   "stars": 654,
+   "stars": 747,
    "language": "JavaScript",
    "created": "2026-11-21"
   },
@@ -128,7 +128,7 @@
    "name": "ThreatDefence/agentic-attack-detections",
    "url": "https://github.com/ThreatDefence/agentic-attack-detections",
    "description": "Detection rules and IOCs for AI agent attack frameworks: ARTEX, Cairn, PentAGI, HexStrike, CyberStrikeAI, Strix, Hermes Agent, Agent Zero, RedAmon, Xalgorix, Pentest Swarm AI. KQL ",
-   "stars": 650,
+   "stars": 724,
    "language": "Python",
    "created": "2026-11-20"
   }
