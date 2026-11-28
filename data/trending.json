@@ -1,136 +1,136 @@
 {
- "updated": "2026-11-27T09:49Z",
- "since": "2026-11-20",
+ "updated": "2026-11-28T09:02Z",
+ "since": "2026-11-21",
  "all": [
   {
-   "name": "EL4CTEO/fast-anything",
-   "url": "https://github.com/EL4CTEO/fast-anything",
-   "description": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
-   "stars": 4351,
+   "name": "trustno1-coder/VIctory-NVIDIA",
+   "url": "https://github.com/trustno1-coder/VIctory-NVIDIA",
+   "description": "VIctory (Xbox Series compatibility layer) tuned for NVIDIA RTX cards: Series X at 2560x1440 with DLSS, about 26-30 fps on an RTX 5070, DLSS frame generation 2x-6x, an F1 settings m",
+   "stars": 4617,
    "language": "Rust",
-   "created": "2026-11-21"
+   "created": "2026-11-25"
+  },
+  {
+   "name": "nexu-io/opengame",
+   "url": "https://github.com/nexu-io/opengame",
+   "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studi",
+   "stars": 2539,
+   "language": "TypeScript",
+   "created": "2026-11-25"
+  },
+  {
+   "name": "alesha-pro/llm.asm",
+   "url": "https://github.com/alesha-pro/llm.asm",
+   "description": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, ",
+   "stars": 2405,
+   "language": "Assembly",
+   "created": "2026-11-25"
   },
   {
    "name": "os6/nospeaker",
    "url": "https://github.com/os6/nospeaker",
    "description": "make your macbook's trackpad talk using its haptic motor",
-   "stars": 1969,
+   "stars": 2000,
    "language": "Swift",
    "created": "2026-11-22"
   },
   {
-   "name": "avatarmanz/VIctory-7900XTX",
-   "url": "https://github.com/avatarmanz/VIctory-7900XTX",
-   "description": "Goal: an Xbox Series title (your own dump) on PC as the Series X version at 4K with ray tracing, picture matching the Xbox first (textures, lighting), then 30+ fps. Porting, not em",
-   "stars": 1890,
-   "language": "Rust",
+   "name": "Reukix/Reloc",
+   "url": "https://github.com/Reukix/Reloc",
+   "description": "iOS accessory-level location simulator over local loopback (iAP2 / MFi-v3 / NMEA)",
+   "stars": 1969,
+   "language": "Swift",
    "created": "2026-11-25"
-  },
-  {
-   "name": "omonkeyz/xbox-emulator",
-   "url": "https://github.com/omonkeyz/xbox-emulator",
-   "description": "Progress notes for running Xbox Series X|S builds on PC (TomBox + rage9)",
-   "stars": 1853,
-   "language": "Rust",
-   "created": "2026-11-21"
-  },
-  {
-   "name": "alesha-pro/llm.asm",
-   "url": "https://github.com/alesha-pro/llm.asm",
-   "description": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, ",
-   "stars": 1798,
-   "language": "Assembly",
-   "created": "2026-11-25"
-  },
-  {
-   "name": "nexu-io/opengame",
-   "url": "https://github.com/nexu-io/opengame",
-   "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studi",
-   "stars": 1667,
-   "language": "TypeScript",
-   "created": "2026-11-25"
-  },
-  {
-   "name": "qianyiai/KuroCat",
-   "url": "https://github.com/qianyiai/KuroCat",
-   "description": "KuroCat — Free open-source 3D/2D desktop typing cat & AI coding companion (Bongo Cat alternative · Tauri v2 + Rust + MCP · Claude/Codex/DeepSeek/OBS · Win/Mac/Linux/Android)｜开源3D桌面",
-   "stars": 1644,
-   "language": "TypeScript",
-   "created": "2026-11-21"
   },
   {
    "name": "Avaneesh-Inamdar/Stream-Tube-Desktop",
    "url": "https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop",
    "description": "Native YouTube client for Windows in Rust, with SponsorBlock, DeArrow and Return YouTube Dislike built in",
-   "stars": 1577,
+   "stars": 1696,
    "language": "Rust",
    "created": "2026-11-22"
+  },
+  {
+   "name": "deterministic-machines/deslop-please",
+   "url": "https://github.com/deterministic-machines/deslop-please",
+   "description": "Bring (back) sanity to your code",
+   "stars": 1377,
+   "language": "Rust",
+   "created": "2026-11-22"
+  },
+  {
+   "name": "DeadInternetStudios/100x-engineer-skill",
+   "url": "https://github.com/DeadInternetStudios/100x-engineer-skill",
+   "description": "100x is a skill by a former Cursor engineer that turns prompts into formally verified, production-ready code",
+   "stars": 1221,
+   "language": "JavaScript",
+   "created": "2026-11-23"
   }
  ],
  "ai": [
   {
-   "name": "EL4CTEO/fast-anything",
-   "url": "https://github.com/EL4CTEO/fast-anything",
-   "description": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
-   "stars": 4351,
-   "language": "Rust",
-   "created": "2026-11-21"
+   "name": "nexu-io/opengame",
+   "url": "https://github.com/nexu-io/opengame",
+   "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studi",
+   "stars": 2539,
+   "language": "TypeScript",
+   "created": "2026-11-25"
   },
   {
    "name": "alesha-pro/llm.asm",
    "url": "https://github.com/alesha-pro/llm.asm",
    "description": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, ",
-   "stars": 1798,
+   "stars": 2405,
    "language": "Assembly",
    "created": "2026-11-25"
   },
   {
-   "name": "nexu-io/opengame",
-   "url": "https://github.com/nexu-io/opengame",
-   "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studi",
-   "stars": 1667,
-   "language": "TypeScript",
+   "name": "gary23w/f-ck_data_brokers",
+   "url": "https://github.com/gary23w/f-ck_data_brokers",
+   "description": "fck_data_brokers.py is a free, open-source Python script that sends opt-out and deletion requests to data brokers on your behalf.",
+   "stars": 959,
+   "language": "Python",
+   "created": "2026-11-26"
+  },
+  {
+   "name": "Moh4696/inkworks-skill",
+   "url": "https://github.com/Moh4696/inkworks-skill",
+   "description": "Inkworks: an agent skill for interactive 3D how-it-works pages drawn like an engineering sheet.",
+   "stars": 551,
+   "language": "JavaScript",
    "created": "2026-11-25"
   },
   {
-   "name": "qianyiai/KuroCat",
-   "url": "https://github.com/qianyiai/KuroCat",
-   "description": "KuroCat — Free open-source 3D/2D desktop typing cat & AI coding companion (Bongo Cat alternative · Tauri v2 + Rust + MCP · Claude/Codex/DeepSeek/OBS · Win/Mac/Linux/Android)｜开源3D桌面",
-   "stars": 1644,
-   "language": "TypeScript",
-   "created": "2026-11-21"
-  },
-  {
-   "name": "sybil-solutions/skill-distill",
-   "url": "https://github.com/sybil-solutions/skill-distill",
-   "description": "Distill a good Claude Code / Codex session into a skill an open-weight model can follow to reproduce the task",
-   "stars": 956,
-   "language": "Python",
-   "created": "2026-11-21"
-  },
-  {
-   "name": "xikhar/papercraft",
-   "url": "https://github.com/xikhar/papercraft",
-   "description": "Agent skill to build games, interactive scenes, web pages and animations in a handcrafted pop-up papercraft style",
-   "stars": 883,
-   "language": "JavaScript",
-   "created": "2026-11-21"
-  },
-  {
-   "name": "w01fb0ss/PiBot",
-   "url": "https://github.com/w01fb0ss/PiBot",
-   "description": "Open-source, local-first AI agent team for your desktop: multi-agent group chats, computer use, browser, MCP, routines and approvals. macOS, Windows, Linux + Android. Built on pi.",
-   "stars": 665,
-   "language": "TypeScript",
-   "created": "2026-11-21"
-  },
-  {
-   "name": "Developing-Gamer/agent-sim",
-   "url": "https://github.com/Developing-Gamer/agent-sim",
-   "description": "iOS simulators for AI agents, on Linux. The agent layer for x86Sim.",
-   "stars": 619,
+   "name": "EL4CTEO/shrink-anything",
+   "url": "https://github.com/EL4CTEO/shrink-anything",
+   "description": "Less code, same tests passing: delete the dead code, files, dependencies and assets in any codebase, and keep each cut only if your own tests still pass.",
+   "stars": 408,
    "language": "Rust",
-   "created": "2026-11-21"
+   "created": "2026-11-23"
+  },
+  {
+   "name": "matheusmongarde/garimpo",
+   "url": "https://github.com/matheusmongarde/garimpo",
+   "description": "Prospecção open source do Google Maps ao Pix: acha negócios no Maps, gera um site-prévia com o nome de cada um, conversa no WhatsApp e cobra por Pix, Mercado Pago ou Stripe. Pagou,",
+   "stars": 239,
+   "language": "TypeScript",
+   "created": "2026-11-24"
+  },
+  {
+   "name": "animede/h3-creator-studio",
+   "url": "https://github.com/animede/h3-creator-studio",
+   "description": "Local AI creator studio for video, images, music, music videos and short videos — MiniMax-H3 / H3-Image, ACE-Step, AivisSpeech, with VRAM and RAM management for 8–96GB GPUs",
+   "stars": 231,
+   "language": "Python",
+   "created": "2026-11-22"
+  },
+  {
+   "name": "AI-FanGe/A-MicroRobot-that-can-Rollerskate",
+   "url": "https://github.com/AI-FanGe/A-MicroRobot-that-can-Rollerskate",
+   "description": "A small desktop robot with LLM-based interactions and reinforcement learning capabilities that you can train to act as you want. And it can remember you！",
+   "stars": 225,
+   "language": "Python",
+   "created": "2026-11-25"
   }
  ]
 }
